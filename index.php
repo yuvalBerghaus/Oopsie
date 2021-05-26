@@ -91,7 +91,7 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#eeeeee">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#cccccc">
         <div class="container" style="justify-content:unset">  <!-- ADDED JUSTIFY CONTENT -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -221,7 +221,7 @@ printRow($result, $conn , "family");
                 </ul>
             </div>
             <div class="col-md text-md-right">
-                <small>&copy; 2021 <a href="http://codingmoney.com/">Bootstrap 5 theme by CodingMoney.com</a></small>
+                <small>&copy; 2021 <a href="http://codingmoney.com/">Bootstrap</a></small>
             </div>
         </div><!-- /footer -->
     </div> <!-- /Container-->
