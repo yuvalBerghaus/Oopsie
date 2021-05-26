@@ -1,0 +1,22 @@
+#myLogo {
+    background-image: url("logo.png");
+    width: 90px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.mainPage {
+    margin-top:90px;
+}
+.buttonAtt {
+    width:100%;
+}
+@media (max-width: 992px) {
+.searchBar {
+    display: none;
+}
+.iconsNav {
+    flex:2;
+    display: block;
+}
+}
