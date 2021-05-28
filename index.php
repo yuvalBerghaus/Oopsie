@@ -36,7 +36,7 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
                   <div class='thumbnail'>
                       <img src='".$row2['imgRef']."' class='rounded-circle' alt='Fjords' style='width:30%'>
                   </div>
-                  <div class=\card-body'>
+                  <div class='card-body'>
                   <h4 class='card-title'>".$row2['first_name']."s parking</h4>
                   <p class='card-text'>Permission : ".$row['permission']."<br>".$row['category']."</p>
                   <div class='dropdown'>
@@ -175,27 +175,31 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
 
     <div class="container pt-4" style="margin-top:90px">
         <div class="row" style="justify-content:center">
+            <div class="row">
+                <h3 class='display-1 text-center text-muted my-4'>My Parking Lists</h3>
+                <i class="glyphicon glyphicon-plus"></i>
+            </div>
         <div class="row">                                <!-- CHANGED MAX WIDTH TO NONE -->
-        <h1 class='display-3 text-center text-muted my-4'>My parking lots</h1>
-<?php
-printRow($result3, $conn , "my");
-?>
-</div>
-<hr>
+        
+        <h3 class='display-3 text-center text-muted my-4'>My Parking Lots</h3>
+            <?php
+            printRow($result3, $conn , "my");
+            ?>
+        </div>
+        <hr>
         <div class="row">
-        <h1 class='display-3 text-center text-muted my-4'>Family parking lots</h1>
-<?php
-printRow($result, $conn , "family");
-?>
-</div>
-
+            <h3 class='display-3 text-center text-muted my-4'>Family Parking Lots</h3>
+                <?php
+                printRow($result, $conn , "family");
+                ?>
+        </div>
         <hr><!-- /signup form -->
         <div class="row">
-        <h1 class='display-3 text-center text-muted my-4'>Friends parking lots</h1>
-        <?php 
-        printRow($result2, $conn , "friends");
-        $conn->close();
-        ?>
+            <h2 class='display-3 text-center text-muted my-4'>Friends Parking Lots</h3>
+            <?php 
+            printRow($result2, $conn , "friends");
+            $conn->close();
+            ?>
         </div>
         <!-- footer -->
         <div class="row py-3">
@@ -217,11 +221,10 @@ printRow($result, $conn , "family");
                             </div>
                         </div>
                     </li>
-
                 </ul>
             </div>
             <div class="col-md text-md-right">
-                <small>&copy; 2021 <a href="http://codingmoney.com/">Bootstrap</a></small>
+                <small>&copy; 2021 <a href="#">Bootstrap</a></small>
             </div>
         </div><!-- /footer -->
     </div> <!-- /Container-->

@@ -18,5 +18,11 @@
 .iconsNav {
     flex:2;
     display: block;
+    direction:rtl;
 }
 }
+@media (min-width: 992px) {
+    .iconsNav {
+        display: none;
+    }
+    }
