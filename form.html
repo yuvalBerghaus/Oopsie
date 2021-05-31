@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script type="text/javascript" src="js/script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Multipurpose Bootstrap 5 Template</title>
     <!-- CSS only -->
@@ -99,57 +100,102 @@
     <!-- /carousel -->
 
     <div class="container pt-4" style="margin-top:90px">
-        <div class="row" style="justify-content:center">
-            <form>
-                <div class="form-group">
-                    <div class='col-md-6 col-lg-4'>
-                        <div class='card mb-3' style='align-items: center;'>
-                            <div class='card-body'>
-                                <h3 class='card-title'>Add New Parking</h3>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" name="search">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"><i
-                                                class="glyphicon glyphicon-search"></i></button>
+        <div class="row">
+            <div class="col-md">
+                <div class="row">
+                    <form>
+                        <div class="form-group">
+                            <div class='card mb-3'>
+                                <div class='card-body'>
+                                    <h3 class='card-title'>Add New Parking</h3>
+                                    <div class="form-group">
+                                        <label for="parkingName">Parking Name:</label>
+                                        <input type="text" class="form-control" id="usr">
                                     </div>
+                                    <div class="col-md" style="display: flex;">
+                                        <div class="card-body" style="background-color: #cccccc;margin-top:20px;">
+                                            <h5 class='card-title'>Add user</h5>
+                                            <div class="input-group">
+                                                <div class="form-outline">
+                                                    <input type="search" id="username" class="form-control" />
+                                                    <label class="form-label" for="username">Search</label>
+                                                </div>
+                                                <button type="button" class="btn btn-primary">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                            <label for="sel1">Select permission (select one):</label>
+                                            <select style="width: auto;" class="form-control" id="sel1">
+                                                <option>Main</option>
+                                                <option>Secondary</option>
+                                            </select>
+                                            <label for="selectedCategory">Select category (select one):</label>
+                                            <select style="width: auto;" class="form-control" id="selectedCategory">
+                                                <option>Family</option>
+                                                <option>Friends</option>
+                                            </select>
+                                            <label for="comment">User list:</label>
+                                            <!-- <ul id="userList">
+        
+                                            </ul> -->
+                                            <br>
+                                            <button type="button" class="btn btn-info" id="addUserButton">
+                                                Add User
+                                            </button>
+                                            <button type="button" id="clearAddUser" class="btn btn-info">
+                                                Clear
+                                            </button>
+                                        </div>
+                                        <div class="card-body" style="background-color: #cccccc;margin-top:20px;">
+                                            <h5 class='card-title'>Add user</h5>
+                                            <div class="input-group">
+                                                <div class="form-outline">
+                                                    <input type="search" id="username" class="form-control" />
+                                                    <label class="form-label" for="username">Search</label>
+                                                </div>
+                                                <button type="button" class="btn btn-primary">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                            <label for="sel1">Select permission (select one):</label>
+                                            <select style="width: auto;" class="form-control" id="sel1">
+                                                <option>Main</option>
+                                                <option>Secondary</option>
+                                            </select>
+                                            <label for="selectedCategory">Select category (select one):</label>
+                                            <select style="width: auto;" class="form-control" id="selectedCategory">
+                                                <option>Family</option>
+                                                <option>Friends</option>
+                                            </select>
+                                            <label for="comment">User list:</label>
+                                            <!-- <ul id="userList">
+        
+                                            </ul> -->
+                                            <br>
+                                            <button type="button" class="btn btn-info" id="addUserButton">
+                                                Add User
+                                            </button>
+                                            <button type="button" id="clearAddUser" class="btn btn-info">
+                                                Clear
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button type="button" class="btn btn-success">Save Parking</button>
                                 </div>
-                                <label for="sel1">Select permission (select one):</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Main</option>
-                                    <option>Secondary</option>
-                                </select>
-                                <label for="sel1">Select category (select one):</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Family</option>
-                                    <option>Friends</option>
-                                </select>
 
                             </div>
-                            <div class='card-body'>
-                                <h4 class='card-title'>Add user</h4>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" name="search">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"><i
-                                                class="glyphicon glyphicon-search"></i></button>
-                                    </div>
-                                </div>
-                                <label for="sel1">Select permission (select one):</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Main</option>
-                                    <option>Secondary</option>
-                                </select>
-                                <label for="sel1">Select category (select one):</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Family</option>
-                                    <option>Friends</option>
-                                </select>
 
-                            </div>
                         </div>
-                    </div>
-            </form>
 
+                    </form>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md" id="addedUsers">
+                </div>
+            </div>
             <!-- footer -->
             <div class="row py-3">
                 <div class="col-md-7">
