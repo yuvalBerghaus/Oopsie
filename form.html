@@ -100,136 +100,132 @@
     <!-- /carousel -->
 
     <div class="container pt-4" style="margin-top:90px">
+
+        <!--ADD BODY FORM HERE-->
         <div class="row">
-            <div class="col-md">
-                <div class="row">
-                    <form>
-                        <div class="form-group">
-                            <div class='card mb-3'>
-                                <div class='card-body'>
-                                    <h3 class='card-title'>Add New Parking</h3>
-                                    <div class="form-group">
-                                        <label for="parkingName">Parking Name:</label>
-                                        <input type="text" class="form-control" id="usr">
-                                    </div>
-                                    <div class="col-md" style="display: flex;">
-                                        <div class="card-body" style="background-color: #cccccc;margin-top:20px;">
-                                            <h5 class='card-title'>Add user</h5>
-                                            <div class="input-group">
-                                                <div class="form-outline">
-                                                    <input type="search" id="username" class="form-control" />
-                                                    <label class="form-label" for="username">Search</label>
-                                                </div>
-                                                <button type="button" class="btn btn-primary">
-                                                    <i class="fas fa-search"></i>
-                                                </button>
-                                            </div>
-                                            <label for="sel1">Select permission (select one):</label>
-                                            <select style="width: auto;" class="form-control" id="sel1">
-                                                <option>Main</option>
-                                                <option>Secondary</option>
-                                            </select>
-                                            <label for="selectedCategory">Select category (select one):</label>
-                                            <select style="width: auto;" class="form-control" id="selectedCategory">
-                                                <option>Family</option>
-                                                <option>Friends</option>
-                                            </select>
-                                            <label for="comment">User list:</label>
-                                            <!-- <ul id="userList">
-        
-                                            </ul> -->
-                                            <br>
-                                            <button type="button" class="btn btn-info" id="addUserButton">
-                                                Add User
-                                            </button>
-                                            <button type="button" id="clearAddUser" class="btn btn-info">
-                                                Clear
-                                            </button>
-                                        </div>
-                                        <div class="card-body" style="background-color: #cccccc;margin-top:20px;">
-                                            <h5 class='card-title'>Add user</h5>
-                                            <div class="input-group">
-                                                <div class="form-outline">
-                                                    <input type="search" id="username" class="form-control" />
-                                                    <label class="form-label" for="username">Search</label>
-                                                </div>
-                                                <button type="button" class="btn btn-primary">
-                                                    <i class="fas fa-search"></i>
-                                                </button>
-                                            </div>
-                                            <label for="sel1">Select permission (select one):</label>
-                                            <select style="width: auto;" class="form-control" id="sel1">
-                                                <option>Main</option>
-                                                <option>Secondary</option>
-                                            </select>
-                                            <label for="selectedCategory">Select category (select one):</label>
-                                            <select style="width: auto;" class="form-control" id="selectedCategory">
-                                                <option>Family</option>
-                                                <option>Friends</option>
-                                            </select>
-                                            <label for="comment">User list:</label>
-                                            <!-- <ul id="userList">
-        
-                                            </ul> -->
-                                            <br>
-                                            <button type="button" class="btn btn-info" id="addUserButton">
-                                                Add User
-                                            </button>
-                                            <button type="button" id="clearAddUser" class="btn btn-info">
-                                                Clear
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <button type="button" class="btn btn-success">Save Parking</button>
-                                </div>
-
+            <h2>
+                Add Parking Page
+            </h2>
+            <br>
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-text">Parking Name</span>
+                        <input type="text" aria-label="First name" class="form-control">
+                    </div>
+                    <br>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>
+                    Add Users
+                </h4>
+                <div class="input-group">
+                    <span class="input-group-text">User Name</span>
+                    <input type="text" aria-label="First name" class="form-control" id="username" required>
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-text">Category</span>
+                    <select class="form-select" aria-label="Default select example" id="selectedCategory">
+                        <option value="myParking">My Parking</option>
+                        <option value="familyParking">Family</option>
+                        <option value="friendsParking">Friend</option>
+                    </select>
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-text">Permission</span>
+                    <select id="sel1" class="form-select" aria-label="Default select example">
+                        <option>Main</option>
+                        <option>Secondary</option>
+                    </select>
+                </div>
+                <br>
+                <button type="button" id="addUserButton" class="btn btn-secondary">Add User</button>
+            </div>
+            <div class="col-md-6">
+                <h4>
+                    Add Cars
+                </h4>
+                <div class="input-group">
+                    <span class="input-group-text">Car Model</span>
+                    <input type="text" aria-label="car model" class="form-control" id="carModel">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-text">Plate Number</span>
+                    <input type="text" aria-label="Plate number" class="form-control" id="plateNum">
+                </div>
+                <br>
+                <button type="button" id="addCarButton" class="btn btn-secondary">Add Car</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <h4>User List</h4>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Category</th>
+                            <th>Permission</th>
+                        </tr>
+                    </thead>
+                    <tbody id="addedUsers">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <h4>Car List</h4>
+                    <thead>
+                        <tr>
+                            <th>Car Model</th>
+                            <th>Plate Number</th>
+                        </tr>
+                    </thead>
+                    <tbody id="addedCars">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- footer -->
+        <div class="row py-3">
+            <div class="col-md-7">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <!-- Example single danger button -->
+                        <div class="btn-group dropup">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Social Media
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Youtube</a>
+                                <a class="dropdown-item" href="https://www.facebook.com/mark.berghaus.3/">Facebook</a>
+                                <a class="dropdown-item" href="#">Instagram</a>
+                                <a class="dropdown-item" href="#">Twitter</a>
                             </div>
-
                         </div>
-
-                    </form>
-                </div>
-
+                    </li>
+                </ul>
             </div>
-            <div class="row">
-                <div class="col-md" id="addedUsers">
-                </div>
+            <div class="col-md text-md-right">
+                <small>&copy; 2021 <a href="#">Bootstrap</a></small>
             </div>
-            <!-- footer -->
-            <div class="row py-3">
-                <div class="col-md-7">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <!-- Example single danger button -->
-                            <div class="btn-group dropup">
-                                <button type="button" class="btn btn-outline-secondary dropdown-toggle"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Social Media
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Youtube</a>
-                                    <a class="dropdown-item"
-                                        href="https://www.facebook.com/mark.berghaus.3/">Facebook</a>
-                                    <a class="dropdown-item" href="#">Instagram</a>
-                                    <a class="dropdown-item" href="#">Twitter</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md text-md-right">
-                    <small>&copy; 2021 <a href="#">Bootstrap</a></small>
-                </div>
-            </div><!-- /footer -->
-        </div> <!-- /Container-->
-        <!-- JavaScript and dependencies -->
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-            crossorigin="anonymous"></script>
+        </div><!-- /footer -->
+    </div> <!-- /Container-->
+    <!-- JavaScript and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
