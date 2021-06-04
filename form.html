@@ -111,10 +111,11 @@
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-text">Parking Name</span>
-                        <input type="text" aria-label="First name" class="form-control">
+                        <input type="text" name="parking_name" aria-label="First name" class="form-control">
                     </div>
                     <br>
-                    <input type="hidden" name="data" id="data" value="">
+                    <input type="hidden" name="userData" id="userData" value="">
+                    <input type="hidden" name="carData" id="carData" value="">
                 </div>
                 <input type="submit" class="btn btn-primary btn-lg">
             </form>
@@ -132,17 +133,17 @@
                 <div class="input-group">
                     <span class="input-group-text">Category</span>
                     <select class="form-select" aria-label="Default select example" id="selectedCategory">
-                        <option value="Me">My Parking</option>
-                        <option value="Family">Family</option>
-                        <option value="Friends">Friend</option>
+                        <option value="me">My Parking</option>
+                        <option value="family">Family</option>
+                        <option value="friends">Friend</option>
                     </select>
                 </div>
                 <br>
                 <div class="input-group">
                     <span class="input-group-text">Permission</span>
                     <select id="sel1" class="form-select" aria-label="Default select example">
-                        <option>Main</option>
-                        <option>Secondary</option>
+                        <option value="main">Main</option>
+                        <option value="secondary">Secondary</option>
                     </select>
                 </div>
                 <br>

@@ -7,13 +7,13 @@ window.onload = () => {
         let selectedCategory = document.getElementById("selectedCategory").value;
         var myHash = {}; // New object
         myHash['user_name'] = userName;
-        myHash['Permission'] = selectedPermission;
+        myHash['permission'] = selectedPermission;
         myHash['category'] = selectedCategory;
         userList.push(myHash);
         let table = [userName, selectedPermission, selectedCategory];
         list(table, "addedUsers");
         // console.log(userList);
-        console.log(JSON.stringify(userList));
+        saveFile(userList, "userData");
     }
     );
     document.getElementById("addCarButton").addEventListener("click", () => {
@@ -26,7 +26,7 @@ window.onload = () => {
         let table = [carModel, plateNum];
         list(table, "addedCars");
         console.log(JSON.stringify(carsList));
-        // console.log(carsList);
+        saveFile(carsList, "carData");
     }
     );
 }
@@ -39,16 +39,6 @@ let list = (readyList, addTo) => {
     </tr>`;
 }
 
-let addToSubmit = (table, type) => {
-    (type == "user") ? userList.push(table) : carsList.push(table);
+let saveFile = (proj, id) => {
+    document.getElementById(id).value = JSON.stringify(proj);
 }
-
-
-
-/* <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-<div class="card-header">${userName} was added to the list!</div>
-<div class="card-body">
-    <p class="card-text">Permission: ${selectedPermission}</p>
-    <p class="card-text">Category: ${selectedCategory}</p>
-</div>
-</div> */

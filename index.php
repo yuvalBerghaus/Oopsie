@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 
 
 $sql = "SELECT * FROM userstoparkings as utop JOIN users as u on utop.user_id = u.user_id
-JOIN parkinglots as p on utop.parking_id = p.parking_id WHERE u.user_id = 1 
+JOIN parkinglots as p on utop.parking_id = p.parking_id WHERE u.user_id = 1
 ";
 $result = $conn->query($sql);
 $result2 = $conn->query($sql);
@@ -28,8 +28,11 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
         if($row['category'] == $category) {
             $owner_id = $row['owner_id'];
             $secQuery = "SELECT * FROM users as u WHERE u.user_id = $owner_id";
+            $thirdQuery = "SELECT * FROM parkinglots as p WHERE p.owner_id = $owner_id";
             $result2 = $conn->query($secQuery);
             $row2 = $result2->fetch_assoc();
+            $result3 = $conn->query($thirdQuery);
+            $row3 = $result2->fetch_assoc();
             echo "
           <div class='col-md-6 col-lg-4'>
               <div class='card mb-3' style='align-items: center;'>
@@ -38,7 +41,7 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
                   </div>
                   <div class='card-body'>
                   <h4 class='card-title'>".$row2['first_name']."s parking</h4>
-                  <p class='card-text'>Permission : ".$row['permission']."<br>".$row['category']."</p>
+                  <p class='card-text'>Permission : ".$row['permission']."<br>".$row['category']."<br>Parking name:".$row3['parking_name']."</p>
                   <div class='dropdown'>
                   <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>Actions
                   <span class='caret'></span></button>
@@ -183,7 +186,7 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
         
         <h3 class='display-4 text-center text-muted my-4'>My Parking Lots</h3>
             <?php
-            printRow($result3, $conn , "my");
+            printRow($result3, $conn , "me");
             ?>
         </div>
         <hr>
