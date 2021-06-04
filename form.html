@@ -107,14 +107,16 @@
                 Add Parking Page
             </h2>
             <br>
-            <form>
+            <form action="PostParking.php" method="post">
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-text">Parking Name</span>
                         <input type="text" aria-label="First name" class="form-control">
                     </div>
                     <br>
+                    <input type="hidden" name="data" id="data" value="">
                 </div>
+                <input type="submit" class="btn btn-primary btn-lg">
             </form>
         </div>
         <div class="row">
@@ -130,9 +132,9 @@
                 <div class="input-group">
                     <span class="input-group-text">Category</span>
                     <select class="form-select" aria-label="Default select example" id="selectedCategory">
-                        <option value="myParking">My Parking</option>
-                        <option value="familyParking">Family</option>
-                        <option value="friendsParking">Friend</option>
+                        <option value="Me">My Parking</option>
+                        <option value="Family">Family</option>
+                        <option value="Friends">Friend</option>
                     </select>
                 </div>
                 <br>
@@ -161,6 +163,7 @@
                 </div>
                 <br>
                 <button type="button" id="addCarButton" class="btn btn-secondary">Add Car</button>
+                <button type="button" id="clearCarInput" class="btn btn-secondary">Clear</button>
             </div>
         </div>
         <br>
@@ -171,8 +174,8 @@
                     <thead>
                         <tr>
                             <th>Username</th>
-                            <th>Category</th>
                             <th>Permission</th>
+                            <th>Category</th>
                         </tr>
                     </thead>
                     <tbody id="addedUsers">
