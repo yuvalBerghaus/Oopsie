@@ -11,9 +11,10 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-
+session_start();
+$loggedUser = $_SESSION["uid"];
 $sql = "SELECT * FROM userstoparkings as utop JOIN users as u on utop.user_id = u.user_id
-JOIN parkinglots as p on utop.parking_id = p.parking_id WHERE u.user_id = 1
+JOIN parkinglots as p on utop.parking_id = p.parking_id WHERE u.user_id = $loggedUser
 ";
 $result = $conn->query($sql);
 $result2 = $conn->query($sql);
@@ -32,7 +33,7 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
             $result2 = $conn->query($secQuery);
             $row2 = $result2->fetch_assoc();
             $result3 = $conn->query($thirdQuery);
-            $row3 = $result2->fetch_assoc();
+            $row3 = $result3->fetch_assoc();
             echo "
           <div class='col-md-6 col-lg-4'>
               <div class='card mb-3' style='align-items: center;'>
@@ -40,8 +41,17 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
                       <img src='".$row2['imgRef']."' class='rounded-circle' alt='Fjords' style='width:30%'>
                   </div>
                   <div class='card-body'>
-                  <h4 class='card-title'>".$row2['first_name']."s parking</h4>
-                  <p class='card-text'>Permission : ".$row['permission']."<br>".$row['category']."<br>Parking name:".$row3['parking_name']."</p>
+                  <h4 class='card-title'>";
+                  if($category == "me") {
+                    //   echo $row3['parking_name'];
+                    echo $row['parking_name'];
+                  }
+                  else {
+                    // echo $row2['first_name']."'s parking";
+                    echo $row2['first_name']."'s parking";
+                  }
+                  echo "</h4>
+                  <p class='card-text'>Permission : ".$row['permission']."<br>Parking name:".$row3['parking_name']."</p>
                   <div class='dropdown'>
                   <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>Actions
                   <span class='caret'></span></button>
@@ -100,19 +110,22 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.php">
                 <section id="myLogo">
                 </section>
             </a>
+            <section>
+                Welcome back <?php echo $_SESSION['username'] ?>
+            </section>
             <span class="searchBar"><input type="text" name="search" placeholder="Search.."></span>
             <section class="iconsNav">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg>
-<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
-</svg>
-</section>
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                </svg>
+            </section>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto text-primary">
                     <li class="nav-item">
@@ -146,40 +159,15 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
             </div>
         </div>
     </nav>
-    <!-- carousel -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="" class="d-block w-100" alt="...">
-            </div>
 
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-    <!-- /carousel -->
-
-    <div class="container pt-4" style="margin-top:90px">
+    <div class="container pt-4" style="position:relative; margin-top:120px">
         <div class="row" style="justify-content:center">
             <div class="row">
-                <h3 class='display-3 text-center text-muted my-4'>My Parking Lists</h3>
+                <h3 class='display-3 text-center text-muted my-4'>My Parking Lists
+                <a href="form.html" class="link-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+</svg></a>
+                </h3>
                 <i class="glyphicon glyphicon-plus"></i>
             </div>
         <div class="row">                                <!-- CHANGED MAX WIDTH TO NONE -->

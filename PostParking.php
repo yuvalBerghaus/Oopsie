@@ -3,7 +3,8 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "yuval";
-$myUid = 1;
+session_start();
+$myUid = $_SESSION['uid'];
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
