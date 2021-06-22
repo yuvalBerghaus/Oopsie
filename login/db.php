@@ -1,9 +1,8 @@
 <?php
-$dbhost = "localhost";
-$dbuser = "root";
-$dbpass = "";
-$dbname = "yuval";	
-
+$dbhost = "182.50.133.173";
+$dbuser = "studDB21a";
+$dbpass = "stud21DB1!";
+$dbname = "studDB21a";	
 $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 //testing connection success

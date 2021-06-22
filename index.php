@@ -1,8 +1,10 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "yuval";
+$servername = "182.50.133.173";
+$username = "studDB21a";
+$password = "stud21DB1!";
+$dbname = "studDB21a";
+
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -12,9 +14,13 @@ if ($conn->connect_error) {
 }
 
 session_start();
+if (!isset($_SESSION["uid"])) {
+    //  ^ redirect to login if the variable is NOT set
+        header("Location: login/index.php");
+    }
 $loggedUser = $_SESSION["uid"];
-$sql = "SELECT * FROM userstoparkings as utop JOIN users as u on utop.user_id = u.user_id
-JOIN parkinglots as p on utop.parking_id = p.parking_id WHERE u.user_id = $loggedUser
+$sql = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
+JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE u.user_id = $loggedUser
 ";
 $result = $conn->query($sql);
 $result2 = $conn->query($sql);
@@ -24,12 +30,12 @@ if (!$result) {
 }
 
 
-function printRow(mysqli_result $result , mysqli $conn , string $category) {
+function getParkingList(mysqli_result $result , mysqli $conn , string $category) {
     while($row = $result->fetch_assoc()) {
         if($row['category'] == $category) {
             $owner_id = $row['owner_id'];
-            $secQuery = "SELECT * FROM users as u WHERE u.user_id = $owner_id";
-            $thirdQuery = "SELECT * FROM parkinglots as p WHERE p.owner_id = $owner_id";
+            $secQuery = "SELECT * FROM tbl_users_27 as u WHERE u.user_id = $owner_id";
+            $thirdQuery = "SELECT * FROM tbl_parkinglots_27 as p WHERE p.owner_id = $owner_id";
             $result2 = $conn->query($secQuery);
             $row2 = $result2->fetch_assoc();
             $result3 = $conn->query($thirdQuery);
@@ -37,8 +43,8 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
             echo "
           <div class='col-md-6 col-lg-4'>
               <div class='card mb-3' style='align-items: center;'>
-                  <div class='thumbnail'>
-                      <img src='".$row2['imgRef']."' class='rounded-circle' alt='Fjords' style='width:30%'>
+                  <div class='thumbnail' style='margin-left:120px'>
+                      <img src='".$row2['imgRef']."' class='rounded-circle' alt='Fjords' style='width:20%;'>
                   </div>
                   <div class='card-body'>
                   <h4 class='card-title'>";
@@ -51,11 +57,11 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
                     echo $row2['first_name']."'s parking";
                   }
                   echo "</h4>
-                  <p class='card-text'>Permission : ".$row['permission']."<br>Parking name:".$row3['parking_name']."</p>
+                  <p class='card-text'>Permission : ".$row['permission']."<br>Parking name:".$row['parking_name']."</p>
                   <div class='dropdown'>
-                  <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>Actions
+                  <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/actions.png'>Actions
                   <span class='caret'></span></button>
-                  <ul class='dropdown-menu'>
+                  <ul class='dropdown-menu p-3 mb-2'>
                     <li><a href='#'>Tow it</a></li>
                     <li><a href='#'>Throw objects</a></li>
                     <li><a href='#'>Identify</a></li>
@@ -64,7 +70,7 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
                 </div>
                 <br>
                 <div class='dropdown'>
-                <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>Analysis
+                <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/analysis.png'>Analysis
                 <span class='caret'></span></button>
                 <ul class='dropdown-menu'>
                   <li><a href='#'>Tow it</a></li>
@@ -74,12 +80,16 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
                 </ul>
               </div>
               <br>
-              <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'>Members
-                <span class='caret'></span></button>
+              <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/members.png'>Members
+                </button>
               <br>
               <br>
-              <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'>Events
-              <span class='caret'></span></button>
+              <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/cars.png'>Cars
+              </button>
+              <br>
+              <br>
+              <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/events.png'>Events
+              </button>
                    </div>
               </div>
           </div>
@@ -99,8 +109,10 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Multipurpose Bootstrap 5 Template</title>
     <!-- CSS only -->
-    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -114,16 +126,10 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
                 <section id="myLogo">
                 </section>
             </a>
-            <section>
-                Welcome back <?php echo $_SESSION['username'] ?>
-            </section>
             <span class="searchBar"><input type="text" name="search" placeholder="Search.."></span>
             <section class="iconsNav">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
                 </svg>
             </section>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -132,11 +138,11 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkOne" role="button"
                             data-toggle="dropdown" aria-expanded="false">
                             Notifications
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkOne">
                             <li><a class="dropdown-item" href="#">Full Stack JavaScript</a></li>
                             <li><a class="dropdown-item" href="#">Python</a></li>
                             <li><a class="dropdown-item" href="#">Artificial Intelligence</a></li>
@@ -144,15 +150,13 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkSecond" role="button"
                             data-toggle="dropdown" aria-expanded="false">
                             Settings
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Real Life Projects</a></li>
-                            <li><a class="dropdown-item" href="#">Online Marketing</a></li>
-                            <li><a class="dropdown-item" href="#">Business & Ideas</a></li>
-                            <li><a class="dropdown-item" href="#">Stock Trading</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkSecond">
+                            <li><a class="dropdown-item" href="#">My Profile</a></li>
+                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -162,33 +166,35 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
 
     <div class="container pt-4" style="position:relative; margin-top:120px">
         <div class="row" style="justify-content:center">
+        <!-- <section style="margin:0">
+                Welcome back <?php echo $_SESSION['username'] ?>
+            </section> -->
             <div class="row">
                 <h3 class='display-3 text-center text-muted my-4'>My Parking Lists
-                <a href="form.html" class="link-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-</svg></a>
+                <a href="form.php" class="link-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg></a>
                 </h3>
-                <i class="glyphicon glyphicon-plus"></i>
             </div>
         <div class="row">                                <!-- CHANGED MAX WIDTH TO NONE -->
         
         <h3 class='display-4 text-center text-muted my-4'>My Parking Lots</h3>
             <?php
-            printRow($result3, $conn , "me");
+            getParkingList($result3, $conn , "me");
             ?>
         </div>
         <hr>
         <div class="row">
             <h3 class='display-4 text-center text-muted my-4'>Family Parking Lots</h3>
                 <?php
-                printRow($result, $conn , "family");
+                getParkingList($result, $conn , "family");
                 ?>
         </div>
         <hr><!-- /signup form -->
         <div class="row">
-            <h2 class='display-4 text-center text-muted my-4'>Friends Parking Lots</h3>
+            <h2 class='display-4 text-center text-muted my-4'>Friends Parking Lots</h2>
             <?php 
-            printRow($result2, $conn , "friends");
+            getParkingList($result2, $conn , "friends");
             $conn->close();
             ?>
         </div>
@@ -216,6 +222,7 @@ function printRow(mysqli_result $result , mysqli $conn , string $category) {
             </div>
             <div class="col-md text-md-right">
                 <small>&copy; 2021 <a href="#">Bootstrap</a></small>
+            </div>
             </div>
         </div><!-- /footer -->
     </div> <!-- /Container-->

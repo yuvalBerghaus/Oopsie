@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (!isset($_SESSION["uid"])) {
+        //  ^ redirect to login if the variable is NOT set
+            header("Location: login/index.php");
+        }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Multipurpose Bootstrap 5 Template</title>
     <!-- CSS only -->
-    <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -30,11 +37,6 @@
                     <path
                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bell"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
-                </svg>
             </section>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto text-primary">
@@ -42,7 +44,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" aria-labelledby="navbarDropdownMenuLink" role="button"
                             data-toggle="dropdown" aria-expanded="false">
                             Notifications
                         </a>
@@ -74,28 +76,18 @@
 
         <!--ADD BODY FORM HERE-->
         <div class="row">
-            <h2>
-                Add Parking Page
+            <h2 class="display-2 text-center text-muted my-4">
+                Create Your Parking
             </h2>
             <br>
-            <form action="PostParking.php" method="post">
+            <form action="PostParking.php" method="post" onsubmit="return addMySelf('<?php echo $_SESSION['username']?>')">
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-text">Parking Name</span>
-                        <input type="text" name="parking_name" aria-label="First name" class="form-control">
-                    </div>
-                    <br>
-                    <input type="hidden" name="userData" id="userData" value="">
-                    <input type="hidden" name="carData" id="carData" value="">
-                </div>
-                <input type="submit" class="btn btn-primary btn-lg">
-            </form>
-        </div>
-        <div class="row">
+                        <input type="text" id="pName" maxlength="10" name="parking_name" aria-label="First name" class="form-control">
+                        <div class="row">
             <div class="col-md-6">
-                <h4>
-                    Add Users
-                </h4>
+                <h4 class="display-6 text-center text-muted my-4">Add Users to <div id="displayParkingNameInUsers"></div></h4>
                 <div class="input-group">
                     <span class="input-group-text">User Name</span>
                     <input type="text" aria-label="First name" class="form-control" id="username" required>
@@ -119,15 +111,15 @@
                 </div>
                 <br>
                 <button type="button" id="addUserButton" class="btn btn-secondary">Add User</button>
+                <button type="button" id="clearUserInput" class="btn btn-secondary">Clear</button>
             </div>
             <div class="col-md-6">
-                <h4>
-                    Add Cars
-                </h4>
+                <h4 class="display-6 text-center text-muted my-4">Add Cars to <div id="displayParkingNameInCars"></div></h4>
                 <div class="input-group">
                     <span class="input-group-text">Car Brand</span>
                     <input type="text" aria-label="car brand" class="form-control" id="carBrand">
                 </div>
+                <div id="match-list"></div>
                 <br>
                 <div class="input-group">
                     <span class="input-group-text">Plate Number</span>
@@ -138,11 +130,23 @@
                 <button type="button" id="clearCarsInput" class="btn btn-secondary">Clear</button>
             </div>
         </div>
+                    </div>
+                    <br>
+                    <input type="hidden" name="userData" id="userData" value="">
+                    <input type="hidden" name="carData" id="carData" value="">
+                </div>
+                <div class="container bg-light">
+                     <div class="col-md-12 text-center">
+                     <input type="submit" value="Submit Parking" class="btn btn-primary btn-lg center" id="submit">
+                      </div>
+                </div>
+            </form>
+        </div>
         <br>
         <div class="row">
             <div class="col-md-6">
+            <h4>User List</h4>
                 <table class="table table-striped">
-                    <h4>User List</h4>
                     <thead>
                         <tr>
                             <th>Username</th>
@@ -156,8 +160,8 @@
                 </table>
             </div>
             <div class="col-md-6">
+            <h4>Car List</h4>
                 <table class="table table-striped">
-                    <h4>Car List</h4>
                     <thead>
                         <tr>
                             <th>Car Brand</th>

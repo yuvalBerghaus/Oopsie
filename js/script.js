@@ -1,6 +1,7 @@
 let userList = [];
 let carsList = [];
 window.onload = () => {
+    let pName = document.getElementById("pName"); // Parking name var
     document.getElementById("addUserButton").addEventListener("click", () => {
         let userName = document.getElementById("username").value;
         let selectedPermission = document.getElementById("sel1").value;
@@ -13,9 +14,37 @@ window.onload = () => {
         let table = [userName, selectedPermission, selectedCategory];
         list(table, "addedUsers");
         // console.log(userList);
-        saveFile(userList, "userData");
+        // saveFile(userList, "userData");
     }
     );
+    //Auto complete
+    let search = document.getElementById('carBrand');
+    let matchList = document.getElementById('match-list');
+    let searchStates = async searchText => {
+        let res = await fetch('./json/cars.json');
+        let states = await res.json();
+        //Get matches to current text input
+        let matches = states.filter(state => {
+            let regex = new RegExp(`^${searchText}`, 'gi');
+            return state.name.match(regex);
+        });
+        console.log(matches);
+        outputHTML(matches);
+        if (searchText.length === 0) {
+            matchList.innerHTML = '';
+        }
+    }
+    let outputHTML = matches => {
+        if (matches.length > 0) {
+            let html = matches.map(match => `
+                    <li>${match.name}</li>
+            `).join('');
+            matchList.innerHTML = `${html}`;
+
+        }
+    }
+    search.addEventListener('input', () => searchStates(search.value));
+    //End of auto complete
     document.getElementById("addCarButton").addEventListener("click", () => {
         let carBrand = document.getElementById("carBrand").value;
         let plateNum = document.getElementById("plateNum").value;
@@ -33,6 +62,26 @@ window.onload = () => {
         document.getElementById("plateNum").value = "";
     }
     );
+    document.getElementById("clearUserInput").addEventListener("click", () => {
+        document.getElementById("username").value = "";
+        console.log("read");
+    }
+    );
+    pName.addEventListener('input', () => {
+        console.log("dasdass");
+        document.getElementById("displayParkingNameInUsers").innerHTML = pName.value;
+        document.getElementById("displayParkingNameInCars").innerHTML = pName.value;
+    });
+}
+
+let addMySelf = (mySelf) => {
+    var myHash = {}; // New object
+    myHash['user_name'] = mySelf;
+    myHash['permission'] = "main";
+    myHash['category'] = "me";
+    userList.push(myHash);
+    saveFile(userList, "userData");
+    co
 }
 
 let deleteTr = (toDelete) => {
@@ -60,4 +109,5 @@ let list = (readyList, addTo) => {
 };
 let saveFile = (proj, id) => {
     document.getElementById(id).value = JSON.stringify(proj);
+    console.log(document.getElementById(id).value);
 }

@@ -6,7 +6,7 @@
   // name of mail field
   if (!empty($_POST["email"])){
     //echo 'FORM SENT';
-    $query  = "SELECT * FROM users WHERE email='" 
+    $query  = "SELECT * FROM tbl_users_27 WHERE email='" 
     . $_POST["email"]. "' and password = '". $_POST["password"]."'";
     echo $query;
     $result = mysqli_query($connection , $query);
@@ -19,8 +19,10 @@
       $_SESSION["uid"] = $row["user_id"];
       $user =$_SESSION['username'];
       $uid =$_SESSION['uid'];
-      echo $user;
-      echo $uid;
+      if (isset($_SESSION["uid"])) {
+        //  ^ redirect to login if the variable is NOT set
+            header("Location: ../index.php");
+        }
       // $sesssion_id=$_SESSION['user_id'];
 
     } else {
