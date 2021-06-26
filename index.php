@@ -4,8 +4,6 @@ $username = "studDB21a";
 $password = "stud21DB1!";
 $dbname = "studDB21a";
 
-
-
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -42,7 +40,7 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
             $row3 = $result3->fetch_assoc();
             echo "
           <div class='col-md-6 col-lg-4'>
-              <div class='card mb-3' style='align-items: center;'>
+              <div class='card mb-3 parkingObject' id='".$row['users_to_parkings_id']."' style='align-items: center;'>
                   <div class='thumbnail' style='margin-left:120px'>
                       <img src='".$row2['imgRef']."' class='rounded-circle' alt='Fjords' style='width:20%;'>
                   </div>
@@ -62,10 +60,10 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
                   <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/actions.png'>Actions
                   <span class='caret'></span></button>
                   <ul class='dropdown-menu p-3 mb-2'>
-                    <li><a href='#'>Tow it</a></li>
-                    <li><a href='#'>Throw objects</a></li>
-                    <li><a href='#'>Identify</a></li>
-                    <li><a href='#'>Pancture</a></li>
+                    <li>Tow it</li>
+                    <li>Throw objects</li>
+                    <li>Identify</li>
+                    <li>Pancture</li>
                   </ul>
                 </div>
                 <br>
@@ -73,10 +71,10 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
                 <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/analysis.png'>Analysis
                 <span class='caret'></span></button>
                 <ul class='dropdown-menu'>
-                  <li><a href='#'>Tow it</a></li>
-                  <li><a href='#'>Throw objects</a></li>
-                  <li><a href='#'>Identify</a></li>
-                  <li><a href='#'>Pancture</a></li>
+                  <li>Tow it</li>
+                  <li>Throw objects</li>
+                  <li>Identify</li>
+                  <li>Pancture</li>
                 </ul>
               </div>
               <br>
@@ -107,11 +105,12 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Multipurpose Bootstrap 5 Template</title>
+    <title>Oops!e</title>
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/scriptIndex.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 

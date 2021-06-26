@@ -10,7 +10,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/scriptForm.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Multipurpose Bootstrap 5 Template</title>
     <!-- CSS only -->
@@ -117,7 +117,7 @@
                 <h4 class="display-6 text-center text-muted my-4">Add Cars to <div id="displayParkingNameInCars"></div></h4>
                 <div class="input-group">
                     <span class="input-group-text">Car Brand</span>
-                    <input type="text" aria-label="car brand" class="form-control" id="carBrand">
+                    <input type="text" aria-label="car brand" class="form-control" id="carBrand" autocomplete="off">
                 </div>
                 <div id="match-list"></div>
                 <br>

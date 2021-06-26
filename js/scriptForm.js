@@ -37,7 +37,9 @@ window.onload = () => {
     let outputHTML = matches => {
         if (matches.length > 0) {
             let html = matches.map(match => `
-                    <li>${match.name}</li>
+                    <div>${match.name}
+                    <input type="hidden" value="${match.name}">
+                    </div>
             `).join('');
             matchList.innerHTML = `${html}`;
 
@@ -49,8 +51,8 @@ window.onload = () => {
         let carBrand = document.getElementById("carBrand").value;
         let plateNum = document.getElementById("plateNum").value;
         let myHash = {}; // New object
-        myHash['car_brand'] = carBrand;
-        myHash['plate_number'] = plateNum;
+        myHash['carBrand'] = carBrand;
+        myHash['plateNum'] = plateNum;
         carsList.push(myHash);
         let table = [carBrand, plateNum];
         list(table, "addedCars");

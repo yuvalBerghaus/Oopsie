@@ -14,10 +14,12 @@ if (!$conn) {
 $users = $_POST['userData'];
 $cars = $_POST['carData'];
 $manageUsers = json_decode($users, true);
+$manageCars = json_decode($cars, true);
 $parkingName = $_POST['parking_name'];
 $sql = "INSERT INTO tbl_parkinglots_27 (parking_name , owner_id) VALUES
 ('$parkingName', '$myUid')";
-echo $sql;
+$sqlInsertCars = "INSERT INTO tbl_cars_27 (car_number) VALUES
+('$parkingName')";
 if(mysqli_query($conn, $sql))
     echo "Records added successfully.";
     
@@ -26,6 +28,7 @@ else {
     }
 $last_id = $conn->insert_id;
 echo $last_id;
+// THIS LOOP IS FOR THE USERS
 for ($i=0;$i<count($manageUsers);$i++){
     $permission = $manageUsers[$i]['permission'];
     $category = $manageUsers[$i]['category'];
@@ -39,5 +42,18 @@ for ($i=0;$i<count($manageUsers);$i++){
     if(mysqli_query($conn, $sql))
         echo "Records added successfully.";
 }
+//THIS LOOP IS FOR THE CARS
+for ($i=0;$i<count($manageCars);$i++){
+    $carBrand = $manageCars[$i]['carBrand'];
+    $plateNum = $manageCars[$i]['plateNum'];
+    $sql = "INSERT INTO tbl_cars_27 (car_brand , plate_number) VALUES
+    ('$carBrand' , '$plateNum')";
+    if(mysqli_query($conn, $sql))
+        echo "Records added successfully.";
+}
+$sql = "INSERT INTO tbl_carstoparkings_27 (parking_id,car_id) VALUES
+('$uid' , '$last_id' , '$permission' , '$category')";
+if(mysqli_query($conn, $sql))
+    echo "Records added successfully.";
 mysqli_close($conn);
 ?>
