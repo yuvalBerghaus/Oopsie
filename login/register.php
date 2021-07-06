@@ -20,6 +20,7 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +36,8 @@ $result = $conn->query($sql);
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#cccccc">
-        <div class="container" style="justify-content:unset">  <!-- ADDED JUSTIFY CONTENT -->
+        <div class="container" style="justify-content:unset">
+            <!-- ADDED JUSTIFY CONTENT -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -46,8 +48,10 @@ $result = $conn->query($sql);
             </a>
             <span class="searchBar"><input type="text" name="search" placeholder="Search.."></span>
             <section class="iconsNav">
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-search"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
             </section>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -83,7 +87,7 @@ $result = $conn->query($sql);
     </nav>
     <div class='container pt-4' style='position:relative; margin-top:120px'>
         <div class='row'>
-        <?php
+            <?php
         $row = $result->fetch_assoc();
                      echo "
             <div class='row'>
@@ -127,24 +131,26 @@ $i = 1;
 </td>
       </tr>
       ";$i++;}?>
-    </tbody>
-  </table>
-  </form>
-  </div>
-  <div class='col'>
-  <h3 class='display-6 text-center text-muted my-4'>Cars<!--Write title here-->
-  </h3>
-  <form id='deleteCars' action='#' method='post'>
-  <table class='table table-dark'>
-    <thead>
-      <tr>
-        <th scope='col'>#</th>
-        <th scope='col'>Car brand</th>
-        <th scope='col'>Plate Number</th>
-        <th scope='col'></th>
-      </tr>
-    </thead>
-    <tbody><?php
+            </tbody>
+            </table>
+            </form>
+        </div>
+        <div class='col'>
+            <h3 class='display-6 text-center text-muted my-4'>Cars
+                <!--Write title here-->
+            </h3>
+            <form id='deleteCars' action='#' method='post'>
+                <table class='table table-dark'>
+                    <thead>
+                        <tr>
+                            <th scope='col'>#</th>
+                            <th scope='col'>Car brand</th>
+                            <th scope='col'>Plate Number</th>
+                            <th scope='col'></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
     $sqlQueryCTP = "SELECT * FROM tbl_carstoparking_27 as ctop JOIN tbl_cars_27 as c on ctop.car_id = c.car_id
     JOIN tbl_parkinglots_27 as p on ctop.parking_id = p.parking_id WHERE ctop.parking_id = $parkingID";
 $resultCTP = $conn->query($sqlQueryCTP);
@@ -164,16 +170,17 @@ $i = 1;
 </td>
       </tr>
       ";$i++;}?>
-    </tbody>
-  </table>
-  </form>
-  </div>
-  </div>
-        </div><!--endofrow -->
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+    </div>
+    <!--endofrow -->
 
 
-        
-        <!-- /footer -->
+
+    <!-- /footer -->
     </div> <!-- /Container-->
     <!-- JavaScript and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"

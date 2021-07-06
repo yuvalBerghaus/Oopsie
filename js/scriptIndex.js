@@ -4,5 +4,6 @@ window.onload = () => {
         parkingObj[i].addEventListener("click", () => {
             window.location.href = `objectPage.php?id=${parkingObj[i].id}`;
         })
+
     }
 }

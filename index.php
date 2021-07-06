@@ -56,17 +56,23 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
                   }
                   echo "</h4>
                   <p class='card-text'>Permission : ".$row['permission']."<br>Parking name:".$row['parking_name']."</p>
-                  <div class='dropdown'>
-                  <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/actions.png'>Actions
-                  <span class='caret'></span></button>
-                  <ul class='dropdown-menu p-3 mb-2'>
-                    <li>Tow it</li>
-                    <li>Throw objects</li>
-                    <li>Identify</li>
-                    <li>Pancture</li>
-                  </ul>
-                </div>
-                <br>
+                  ";
+                  if($row['permission'] == 'main') {
+echo "
+<div class='dropdown'>
+<button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/actions.png'>Actions
+<span class='caret'></span></button>
+<ul class='dropdown-menu p-3 mb-2'>
+  <li>Tow it</li>
+  <li>Throw objects</li>
+  <li>Identify</li>
+  <li>Pancture</li>
+</ul>
+</div>
+<br>
+";
+                  }
+                  echo"
                 <div class='dropdown'>
                 <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/analysis.png'>Analysis
                 <span class='caret'></span></button>
@@ -88,6 +94,15 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
               <br>
               <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/events.png'>Events
               </button>
+              <br>
+              <br>
+              ";
+              if($row['permission'] == 'main') {
+              echo "
+              <button style='width:100%' class='btn btn-danger' type='button' data-toggle='dropdown' id='".$row['users_to_parkings_id']."'>Delete
+              </button>
+              ";}
+              echo "
                    </div>
               </div>
           </div>

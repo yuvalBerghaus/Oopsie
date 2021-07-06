@@ -65,6 +65,7 @@
             placeholder="Enter Password" />
         </div>
         <button type="submit" class="btn btn-primary">Log Me In</button>
+        <button type="submit" class="btn btn-primary">Register</button>
         <div class="error-message"><?php if(isset($message)) { echo $message; } ?></div> 
       </form>
     </div>
