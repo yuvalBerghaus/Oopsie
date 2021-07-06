@@ -21,6 +21,15 @@ else if(isset($_POST['carID'])) {
   $whoDelete = "cars";
   delete($id, $conn , $sqlDelOne, $whoDelete);
 }
+else if(isset($_GET['userstoparkingID'])) {
+  $id = $_GET['userstoparkingID'];
+  $sqlDelOne = "DELETE FROM tbl_parkinglots_27 WHERE parking_id = $id";
+  $sqlDelTwo = "DELETE FROM tbl_userstoparkings_27 WHERE parking_id = $id";
+  $sqlDelThree = "DELETE FROM tbl_carstoparking_27 WHERE parking_id = $id";
+  $conn->query($sqlDelOne);
+  $conn->query($sqlDelTwo);
+  $conn->query($sqlDelThree);
+}
 else if(isset($_POST['memberID'])) {
   $id = $_POST['memberID'];
   $sqlDelOne = "DELETE FROM tbl_userstoparkings_27 WHERE users_to_parkings_id = $id";
@@ -51,7 +60,7 @@ function delete($id, $conn, $sqlDel, $whoDelete) {
             ";$i++;}
             }
             else if($whoDelete == "userstoparkings") {
-
+              $sqlTwo = "DELETE FROM ";
             }
             else if($whoDelete == "users") {
               $sqlTwo = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id

@@ -92,15 +92,15 @@ echo "
               </button>
               <br>
               <br>
+              ";
+              if($row['permission'] == 'main') {
+              echo "
               <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/events.png'>Events
               </button>
               <br>
               <br>
-              ";
-              if($row['permission'] == 'main') {
-              echo "
-              <button style='width:100%' class='btn btn-danger' type='button' data-toggle='dropdown' id='".$row['users_to_parkings_id']."'>Delete
-              </button>
+              <form method='get' action='delete.php'><button value='".$row['parking_id']."' style='width:100%' name='userstoparkingID' class='btn btn-danger' type='submit'>Delete
+              </button></form>
               ";}
               echo "
                    </div>
