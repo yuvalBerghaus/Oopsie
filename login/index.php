@@ -1,15 +1,12 @@
 <?php
-  include "db.php";
-  include "config.php";
-
-
+include('db.php');
   // name of mail field
   if (!empty($_POST["email"])){
     //echo 'FORM SENT';
     $query  = "SELECT * FROM tbl_users_27 WHERE email='" 
     . $_POST["email"]. "' and password = '". $_POST["password"]."'";
     echo $query;
-    $result = mysqli_query($connection , $query);
+    $result = mysqli_query($conn , $query);
     $row    = mysqli_fetch_array($result); 
 
     if(is_array($row)) {
@@ -19,12 +16,11 @@
       $_SESSION["uid"] = $row["user_id"];
       $user =$_SESSION['username'];
       $uid =$_SESSION['uid'];
+      // $sesssion_id=$_SESSION['user_id'];
       if (isset($_SESSION["uid"])) {
         //  ^ redirect to login if the variable is NOT set
             header("Location: ../index.php");
         }
-      // $sesssion_id=$_SESSION['user_id'];
-
     } else {
       echo "failure";
     }

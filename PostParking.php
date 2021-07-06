@@ -1,16 +1,17 @@
 <?php
-$servername = "182.50.133.173";
-$username = "studDB21a";
-$password = "stud21DB1!";
-$dbname = "studDB21a";
-session_start();
-$myUid = $_SESSION['uid'];
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
+include('login/db.php');
+// $servername = "182.50.133.173";
+// $username = "studDB21a";
+// $password = "stud21DB1!";
+// $dbname = "studDB21a";
+// session_start();
+// $myUid = $_SESSION['uid'];
+// // Create connection
+// $conn = mysqli_connect($servername, $username, $password, $dbname);
+// // Check connection
+// if (!$conn) {
+//   die("Connection failed: " . mysqli_connect_error());
+// }
 $users = $_POST['userData'];
 $cars = $_POST['carData'];
 $manageUsers = json_decode($users, true);
@@ -57,6 +58,8 @@ if(count($manageCars)) {
         
     }
 }
+header("Location: index.php");
+
 function addCarsToParking($last_idOfCar, $last_idOfParking, $conn) {
     $sql = "INSERT INTO tbl_carstoparking_27 (parking_id , car_id) VALUES
     ('$last_idOfParking' , '$last_idOfCar')";

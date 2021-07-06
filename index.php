@@ -1,21 +1,22 @@
 <?php
-$servername = "182.50.133.173";
-$username = "studDB21a";
-$password = "stud21DB1!";
-$dbname = "studDB21a";
+// $servername = "182.50.133.173";
+// $username = "studDB21a";
+// $password = "stud21DB1!";
+// $dbname = "studDB21a";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+// // Create connection
+// $conn = new mysqli($servername, $username, $password, $dbname);
+// // Check connection
+// if ($conn->connect_error) {
+//   die("Connection failed: " . $conn->connect_error);
+// }
 
-session_start();
-if (!isset($_SESSION["uid"])) {
-    //  ^ redirect to login if the variable is NOT set
-        header("Location: login/index.php");
-    }
+// session_start();
+// if (!isset($_SESSION["uid"])) {
+//     //  ^ redirect to login if the variable is NOT set
+//         header("Location: login/index.php");
+//     }
+include('login/db.php');
 $loggedUser = $_SESSION["uid"];
 $sql = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
 JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE u.user_id = $loggedUser
@@ -42,7 +43,7 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
           <div class='col-md-6 col-lg-4'>
               <div class='card mb-3 parkingObject' id='".$row['users_to_parkings_id']."' style='align-items: center;'>
                   <div class='thumbnail' style='margin-left:120px'>
-                      <img src='".$row2['imgRef']."' class='rounded-circle' alt='Fjords' style='width:20%;'>
+                      <img src='".$row['imgRef']."' class='rounded-circle' alt='Fjords' style='width:20%;'>
                   </div>
                   <div class='card-body'>
                   <h4 class='card-title'>";
