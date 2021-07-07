@@ -1,0 +1,98 @@
+[06-Jul-2021 21:10:38 UTC] PHP Notice:  Undefined index: uid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 20
+[06-Jul-2021 21:10:38 UTC] PHP Notice:  Invalid query: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2 in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 28
+[06-Jul-2021 21:10:38 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 185
+[06-Jul-2021 21:10:38 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to getParkingList() must be an instance of mysqli_result, bool given, called in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 198 and defined in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php:32
+Stack trace:
+#0 /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php(198): getParkingList(false, Object(mysqli), 'me')
+#1 {main}
+  thrown in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 32
+[06-Jul-2021 21:11:03 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/form.php on line 83
+[06-Jul-2021 21:11:10 UTC] PHP Notice:  Undefined index: uid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 20
+[06-Jul-2021 21:11:10 UTC] PHP Notice:  Invalid query: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2 in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 28
+[06-Jul-2021 21:11:10 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 185
+[06-Jul-2021 21:11:10 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to getParkingList() must be an instance of mysqli_result, bool given, called in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 198 and defined in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php:32
+Stack trace:
+#0 /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php(198): getParkingList(false, Object(mysqli), 'me')
+#1 {main}
+  thrown in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 32
+[06-Jul-2021 21:12:39 UTC] PHP Notice:  Undefined index: uid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 20
+[06-Jul-2021 21:12:39 UTC] PHP Notice:  Invalid query: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2 in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 28
+[06-Jul-2021 21:12:39 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 185
+[06-Jul-2021 21:12:39 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to getParkingList() must be an instance of mysqli_result, bool given, called in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 198 and defined in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php:32
+Stack trace:
+#0 /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php(198): getParkingList(false, Object(mysqli), 'me')
+#1 {main}
+  thrown in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 32
+[06-Jul-2021 21:12:52 UTC] PHP Notice:  Undefined index: uid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 20
+[06-Jul-2021 21:12:52 UTC] PHP Notice:  Invalid query: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2 in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 28
+[06-Jul-2021 21:12:52 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 185
+[06-Jul-2021 21:12:52 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to getParkingList() must be an instance of mysqli_result, bool given, called in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 198 and defined in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php:32
+Stack trace:
+#0 /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php(198): getParkingList(false, Object(mysqli), 'me')
+#1 {main}
+  thrown in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 32
+[06-Jul-2021 21:14:19 UTC] PHP Notice:  Undefined variable: myUid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/PostParking.php on line 21
+[06-Jul-2021 21:14:39 UTC] PHP Notice:  Undefined index: uid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 20
+[06-Jul-2021 21:14:39 UTC] PHP Notice:  Invalid query: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2 in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 28
+[06-Jul-2021 21:14:39 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 185
+[06-Jul-2021 21:14:39 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to getParkingList() must be an instance of mysqli_result, bool given, called in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 198 and defined in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php:32
+Stack trace:
+#0 /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php(198): getParkingList(false, Object(mysqli), 'me')
+#1 {main}
+  thrown in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 32
+[06-Jul-2021 21:15:52 UTC] PHP Notice:  Undefined index: uid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 20
+[06-Jul-2021 21:15:52 UTC] PHP Notice:  Invalid query: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2 in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 28
+[06-Jul-2021 21:15:52 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 185
+[06-Jul-2021 21:15:52 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to getParkingList() must be an instance of mysqli_result, bool given, called in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 198 and defined in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php:32
+Stack trace:
+#0 /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php(198): getParkingList(false, Object(mysqli), 'me')
+#1 {main}
+  thrown in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 32
+[06-Jul-2021 21:16:03 UTC] PHP Notice:  Undefined index: uid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 20
+[06-Jul-2021 21:16:03 UTC] PHP Notice:  Invalid query: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2 in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 28
+[06-Jul-2021 21:16:03 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 185
+[06-Jul-2021 21:16:03 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to getParkingList() must be an instance of mysqli_result, bool given, called in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 198 and defined in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php:32
+Stack trace:
+#0 /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php(198): getParkingList(false, Object(mysqli), 'me')
+#1 {main}
+  thrown in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 32
+[06-Jul-2021 21:16:34 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/form.php on line 83
+[06-Jul-2021 21:17:06 UTC] PHP Notice:  Undefined variable: myUid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/PostParking.php on line 21
+[06-Jul-2021 21:17:23 UTC] PHP Notice:  Undefined index: uid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 20
+[06-Jul-2021 21:17:23 UTC] PHP Notice:  Invalid query: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2 in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 28
+[06-Jul-2021 21:17:23 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 185
+[06-Jul-2021 21:17:23 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to getParkingList() must be an instance of mysqli_result, bool given, called in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 198 and defined in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php:32
+Stack trace:
+#0 /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php(198): getParkingList(false, Object(mysqli), 'me')
+#1 {main}
+  thrown in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 32
+[06-Jul-2021 21:18:53 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/login/db.php on line 17
+[06-Jul-2021 21:18:53 UTC] PHP Notice:  Undefined index: uid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 20
+[06-Jul-2021 21:18:53 UTC] PHP Notice:  Invalid query: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2 in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 28
+[06-Jul-2021 21:18:53 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 185
+[06-Jul-2021 21:18:53 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to getParkingList() must be an instance of mysqli_result, bool given, called in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 198 and defined in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php:32
+Stack trace:
+#0 /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php(198): getParkingList(false, Object(mysqli), 'me')
+#1 {main}
+  thrown in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 32
+[06-Jul-2021 21:19:00 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/login/db.php on line 17
+[06-Jul-2021 21:19:04 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/login/db.php on line 17
+[06-Jul-2021 21:19:04 UTC] PHP Notice:  Undefined index: uid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 20
+[06-Jul-2021 21:19:04 UTC] PHP Notice:  Invalid query: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2 in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 28
+[06-Jul-2021 21:19:04 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 185
+[06-Jul-2021 21:19:04 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to getParkingList() must be an instance of mysqli_result, bool given, called in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 198 and defined in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php:32
+Stack trace:
+#0 /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php(198): getParkingList(false, Object(mysqli), 'me')
+#1 {main}
+  thrown in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 32
+[06-Jul-2021 21:19:17 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/login/db.php on line 17
+[06-Jul-2021 21:19:29 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/login/db.php on line 17
+[06-Jul-2021 21:19:35 UTC] PHP Notice:  session_start(): A session had already been started - ignoring in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/login/db.php on line 17
+[06-Jul-2021 21:19:35 UTC] PHP Notice:  Undefined index: uid in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 20
+[06-Jul-2021 21:19:35 UTC] PHP Notice:  Invalid query: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2 in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 28
+[06-Jul-2021 21:19:35 UTC] PHP Notice:  Undefined index: username in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 185
+[06-Jul-2021 21:19:35 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to getParkingList() must be an instance of mysqli_result, bool given, called in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 198 and defined in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php:32
+Stack trace:
+#0 /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php(198): getParkingList(false, Object(mysqli), 'me')
+#1 {main}
+  thrown in /home/zgk29jy57r32/public_html/students/2020-2021/web1/dev_27/cloudV2/index.php on line 32

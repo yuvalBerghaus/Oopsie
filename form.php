@@ -85,7 +85,10 @@
                     <div class="input-group">
                         <span class="input-group-text">Parking Name</span>
                         <input type="text" id="pName" maxlength="10" name="parking_name" aria-label="First name" class="form-control">
+                        <span class="input-group-text">Parking Address</span>
+                        <input type="text" id="pAddress" maxlength="10" name="parking_address" aria-label="First name" class="form-control">
                         <div class="row">
+            
             <div class="col-md-6">
                 <h4 class="display-6 text-center text-muted my-4">Add Users to <div id="displayParkingNameInUsers"></div></h4>
                 <div class="input-group">
@@ -113,11 +116,12 @@
                 <button type="button" id="addUserButton" class="btn btn-secondary">Add User</button>
                 <button type="button" id="clearUserInput" class="btn btn-secondary">Clear</button>
             </div>
+            
             <div class="col-md-6">
                 <h4 class="display-6 text-center text-muted my-4">Add Cars to <div id="displayParkingNameInCars"></div></h4>
                 <div class="input-group">
                     <span class="input-group-text">Car Brand</span>
-                    <input type="text" aria-label="car brand" class="form-control" id="carBrand" autocomplete="off">
+                    <input type="text" aria-label="car brand" class="form-control input-lg" id="carBrand" autocomplete="off">
                 </div>
                 <div id="match-list"></div>
                 <br>
@@ -135,15 +139,7 @@
                     <input type="hidden" name="userData" id="userData" value="">
                     <input type="hidden" name="carData" id="carData" value="">
                 </div>
-                <div class="container bg-light">
-                     <div class="col-md-12 text-center">
-                     <input type="submit" value="Submit Parking" class="btn btn-primary btn-lg center" id="submit">
-                      </div>
-                </div>
-            </form>
-        </div>
-        <br>
-        <div class="row">
+                <div class="row">
             <div class="col-md-6">
             <h4>User List</h4>
                 <table class="table table-striped">
@@ -174,6 +170,14 @@
                 </table>
             </div>
         </div>
+                <div class="container bg-light">
+                     <div class="col-md-12 text-center">
+                     <input type="submit" value="Submit Parking" class="btn btn-primary btn-lg center" id="submit">
+                      </div>
+                </div>
+            </form>
+        </div>
+        <br>
         <!-- footer -->
         <div class="row py-3">
             <div class="col-md-7">

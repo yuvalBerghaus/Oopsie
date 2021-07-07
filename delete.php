@@ -1,12 +1,13 @@
 <?php 
-$servername = "182.50.133.173";
-$username = "studDB21a";
-$password = "stud21DB1!";
-$dbname = "studDB21a";
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+// $servername = "182.50.133.173";
+// $username = "studDB21a";
+// $password = "stud21DB1!";
+// $dbname = "studDB21a";
+// $conn = new mysqli($servername, $username, $password, $dbname);
+// if ($conn->connect_error) {
+//   die("Connection failed: " . $conn->connect_error);
+// }
+include('./db.php');
 session_start();
 
 if (!isset($_SESSION["uid"])) {

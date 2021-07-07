@@ -1,15 +1,5 @@
 <?php
-$servername = "182.50.133.173";
-$username = "studDB21a";
-$password = "stud21DB1!";
-$dbname = "studDB21a";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+include('db.php');
 session_start();
 $loggedUser = $_SESSION["uid"];
 $u2p = $_GET['id'];
@@ -83,17 +73,17 @@ $result = $conn->query($sql);
     </nav>
     <div class='container pt-4' style='position:relative; margin-top:120px'>
         <div class='row'>
+        
         <?php
         $row = $result->fetch_assoc();
-                     echo "
-            <div class='row'>
-                <h3 class='display-3 text-center text-muted my-4'>".$row['parking_name']."<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' style='width: 5vw; height: 5vh;' viewBox='0 0 16 16'>
-                <path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
-              </svg><!--Write title here-->
-                </h3>
+                     echo "  
+            <div class='col'>
+            <h3 class='display-3 text-center text-muted my-4'>".$row['parking_name']."<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' style='width: 5vw; height: 5vh;' viewBox='0 0 16 16'>
+                     <path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
+                   </svg><!--Write title here-->
+                     </h3>      
                 <img src='https://media-cdn.tripadvisor.com/media/photo-s/06/6d/0f/c0/red-roof-inn-durham-duke.jpg' style='height:70%; width:auto'>
             </div>
-            <div class='row'>
             <div class='col'>
             <h3 class='display-6 text-center text-muted my-4'>Members<!--Write title here-->
             </h3>
@@ -117,16 +107,45 @@ $result = $conn->query($sql);
     $sqlTwo = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
 JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE utop.parking_id = $parkingID";
 $resultTwo = $conn->query($sqlTwo);
-$i = 1;
+$i = 0;
     while($rowTwo = $resultTwo->fetch_assoc()) {
         if($rowTwo['user_id'] != $row['user_id']) {
         echo "
       <tr class='table-active'>
         <th scope='row'>$i</th>
         <td>".$rowTwo['username']."</td>
-        <td>".$rowTwo['permission']."</td>
-        <td>".$rowTwo['category']."</td>
         <td>
+        <select name='cars' id='cars'>
+  <option value='".$rowTwo['username']."' selected>".$rowTwo['permission']."</option>
+  <option value='saab'>
+  ";
+  if($rowTwo['permission'] == 'main') {
+      echo "secondary";
+  }
+  else {
+      echo "main";
+  }
+  echo "
+  </option>
+</select></td>
+<td>
+<select name='cars' id='cars'>
+";
+$categoryArray = array("me", "family", "friends");
+for($j = 0 ; $j < 3 ; $j++) {
+    if($categoryArray[$j] == $rowTwo['category']) {
+        echo "<option value='".$rowTwo['category']."' selected>".$rowTwo['category']."</option>";
+    }
+    else {
+        echo "<option value='".$categoryArray[$j]."'>".$categoryArray[$j]."</option>";
+    }
+}
+echo "
+</select></td>
+        <td>
+        ";
+        if($row['permission'] == 'main') {
+            echo "
         <button value='".$rowTwo['users_to_parkings_id']."' type='submit'>
         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
   <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>
@@ -134,7 +153,7 @@ $i = 1;
 </svg></button>
 </td>
       </tr>
-      ";}$i++;}?>
+      ";}}$i++;}?>
     </tbody>
   </table>
   </form>
@@ -162,14 +181,16 @@ $i = 1;
     $sqlQueryCTP = "SELECT * FROM tbl_carstoparking_27 as ctop JOIN tbl_cars_27 as c on ctop.car_id = c.car_id
     JOIN tbl_parkinglots_27 as p on ctop.parking_id = p.parking_id WHERE ctop.parking_id = $parkingID";
 $resultCTP = $conn->query($sqlQueryCTP);
-$i = 1;
+$i = 0;
     while($rowTwo = $resultCTP->fetch_assoc()) {
         echo "
       <tr class='table-active'>
         <th scope='row'>$i</th>
         <td>".$rowTwo['car_brand']."</td>
         <td>".$rowTwo['plate_number']."</td>
-        <td>
+        <td>";
+        if($row['permission'] == 'main') {
+        echo "
         <button type='submit' value='".$rowTwo['cTp_id']."'>
         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
   <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>
@@ -177,11 +198,10 @@ $i = 1;
 </svg></button>
 </td>
       </tr>
-      ";$i++;}?>
+      ";}$i++;}?>
     </tbody>
   </table>
   </form>
-  </div>
   </div>
         </div><!--endofrow -->
 

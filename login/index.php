@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+include('../db.php');
   // name of mail field
   if (!empty($_POST["email"])){
     //echo 'FORM SENT';

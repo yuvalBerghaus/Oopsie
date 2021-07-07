@@ -1,17 +1,5 @@
 <?php
-include('login/db.php');
-// $servername = "182.50.133.173";
-// $username = "studDB21a";
-// $password = "stud21DB1!";
-// $dbname = "studDB21a";
-// session_start();
-// $myUid = $_SESSION['uid'];
-// // Create connection
-// $conn = mysqli_connect($servername, $username, $password, $dbname);
-// // Check connection
-// if (!$conn) {
-//   die("Connection failed: " . mysqli_connect_error());
-// }
+include('db.php');
 $users = $_POST['userData'];
 $cars = $_POST['carData'];
 $manageUsers = json_decode($users, true);
