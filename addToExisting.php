@@ -4,19 +4,9 @@ include('config.php');
 $users = $_POST['userData'];
 $myUid = $_SESSION["uid"];
 $cars = $_POST['carData'];
+$parkingID = $_POST['parkingID'];
 $manageUsers = json_decode($users, true);
 $manageCars = json_decode($cars, true);
-$parkingName = $_POST['parking_name'];
-$sql = "INSERT INTO tbl_parkinglots_27 (parking_name , owner_id) VALUES
-('$parkingName', '$myUid')";
-if(mysqli_query($conn, $sql))
-    echo "Records added successfully.";
-    
-else {
-    echo "IT DIDNT WORK";
-    }
-$last_idOfParking = $conn->insert_id;
-echo $last_idOfParking;
 // THIS LOOP IS FOR THE USERS
 for ($i=0;$i<count($manageUsers);$i++){
     $permission = $manageUsers[$i]['permission'];
@@ -26,7 +16,7 @@ for ($i=0;$i<count($manageUsers);$i++){
         $uid = $row["user_id"];
     }
     $sql = "INSERT INTO tbl_userstoparkings_27 (user_id, parking_id , permission , category) VALUES
-    ('$uid' , '$last_idOfParking' , '$permission' , '$category')";
+    ('$uid' , '$parkingID' , '$permission' , '$category')";
     if(mysqli_query($conn, $sql))
         echo "Records added successfully.";
     else {
@@ -44,7 +34,8 @@ if(count($manageCars)) {
             echo "Records added successfully.";
         $last_idOfCar = $conn->insert_id;
         echo $last_idOfParking;
-        addCarsToParking($last_idOfCar, $last_idOfParking , $conn);
+        addCarsToParking($last_idOfCar, $parkingID
+         , $conn);
         
     }
 }

@@ -17,7 +17,7 @@ $result = $conn->query($sql);
     <title>Oops!e</title>
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
-    <script type="text/javascript" src="js/scriptForm.js"></script>
+    <script type="text/javascript" src="js/scriptObject.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -155,10 +155,8 @@ echo "
 <td>
 <form id='updateUser' action='#' method='post'>
         <button value='".$rowTwo['users_to_parkings_id']."' type='submit'>
-        <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
-  <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>
-  <path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/>
-</svg></button></form>
+        <img src='images/success.png' style='height:20px'>
+        </button></form>
 </td>
       </tr>
       ";}}$i++;}?>
@@ -213,7 +211,7 @@ $i = 0;
         </div><!--endofrow -->
         <div class="row">
             <div class="col-md-6">
-                <h4 class="display-6 text-center text-muted my-4">Add Users to <div id="displayParkingNameInUsers"></div></h4>
+                <h4 class="display-6 text-center text-muted my-4">Add Users to <?php echo $row['parking_name']; ?></h4>
                 <div class="input-group">
                     <span class="input-group-text">User Name</span>
                     <input type="text" aria-label="First name" class="form-control" id="username" required>
@@ -241,7 +239,7 @@ $i = 0;
             </div>
             
             <div class="col-md-6">
-                <h4 class="display-6 text-center text-muted my-4">Add Cars to <div id="displayParkingNameInCars"></div></h4>
+                <h4 class="display-6 text-center text-muted my-4">Add Cars to <?php echo $row['parking_name']; ?></h4>
                 <div class="input-group">
                     <span class="input-group-text">Car Brand</span>
                     <input type="text" aria-label="car brand" class="form-control input-lg" id="carBrand" autocomplete="off">
@@ -290,8 +288,20 @@ $i = 0;
                     </tbody>
                 </table>
             </div>
-
-        
+            <div class="container bg-light">
+                     <div class="col-md-12 text-center">
+                    <form action="#" id="updateExistingParking" method="post" onsubmit="saveFile()">
+                    <input type='hidden' name='userData' id='userData' value=''>
+            <input type='hidden' name='carData' id='carData' value=''>
+                     <button type="submit" value='<?php echo $row['parking_id']?>' class="btn btn-primary btn-lg center" id="submit">Add to my parking</button>
+        </form>
+                      </div>
+                </div>
+                <div class="col-md-12 text-center">
+            <?php    echo "  <form method='get' action='delete.php'><button value='".$row['parking_id']."' style='' name='userstoparkingID' class='btn btn-danger' type='submit'>
+            Delete Parking
+               </button></form>";?>
+               </div>
         <!-- /footer -->
     </div> <!-- /Container-->
     <!-- JavaScript and dependencies -->

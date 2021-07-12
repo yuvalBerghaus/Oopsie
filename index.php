@@ -31,8 +31,14 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
             echo "
           <div class='col-md-6 col-lg-4'>
               <div class='card mb-3 parkingObject' id='".$row['users_to_parkings_id']."' style='align-items: center;'>
-                  <div class='thumbnail' style='margin-left:120px'>
-                      <img src='".$row['imgRef']."' class='rounded-circle' alt='Fjords' style='width:20%;'>
+                  <div class='thumbnail' style='margin-left:120px'>";
+                    if($category != "me") {
+                        echo "<img src='".$row2['imgRef']."' class='rounded-circle' alt='Fjords' style='width:20%;'>";
+                    }
+                    else {
+                        echo "<img src='".$row['imgRef']."' class='rounded-circle' alt='Fjords' style='width:20%;'>";
+                    }
+                    echo "
                   </div>
                   <div class='card-body'>
                   <h4 class='card-title'>";
@@ -129,7 +135,7 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
                 </section>
             </a>
             <span class="searchBar"><input type="text" name="search" placeholder="Search.."></span>
-            <section style="width:30px; font-size:10px">
+            <section style="width:30px; font-size:10px;">
             <?php
             echo "Welcome back ".$loggedUserName;
             ?>
