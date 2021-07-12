@@ -1,6 +1,7 @@
 <?php
 include('db.php');
 $users = $_POST['userData'];
+$myUid = $_SESSION['uid'];
 $cars = $_POST['carData'];
 $manageUsers = json_decode($users, true);
 $manageCars = json_decode($cars, true);

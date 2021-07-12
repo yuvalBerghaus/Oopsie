@@ -13,7 +13,7 @@
 //     });
 // });
 $(document).ready(function () {
-    $("#deleteCars").submit(function (e) {
+    $("#deleteCars").submit(function () {
         let formData = {
             "carID": $(document.activeElement).val()
         };
@@ -26,7 +26,7 @@ $(document).ready(function () {
             }
         })
     })
-    $("#deleteUsers").submit(function (e) {
+    $("#deleteUsers").submit(function () {
         let formData = {
             "memberID": $(document.activeElement).val()
         };
@@ -37,6 +37,21 @@ $(document).ready(function () {
             data: formData,
             success: function (result) {
                 $("#deleteUsers").html(result);
+            }
+        })
+    })
+    $("#updateUser").submit(function () {
+        let formData = {
+            "u2pID": $(document.activeElement).val(),
+            "selectedPermission": $('#selectedPermission').val(),
+            "selectedCategory": $('#selectedCategory').val()
+        };
+        console.log(formData);
+        $.ajax({
+            url: "./update.php",
+            type: "post",
+            data: formData,
+            success: function (result) {
             }
         })
     })

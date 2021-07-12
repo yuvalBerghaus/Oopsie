@@ -2,7 +2,7 @@ let userList = [];
 let carsList = [];
 window.onload = () => {
     let pName = document.getElementById("pName"); // Parking name var
-    document.getElementById("addUserButton").addEventListener("click", () => {
+    document.getElementById("addUserButton").addEventListener("click", () => { // For each add User to list click
         let userName = document.getElementById("username").value;
         let selectedPermission = document.getElementById("sel1").value;
         let selectedCategory = document.getElementById("selectedCategory").value;
@@ -17,7 +17,7 @@ window.onload = () => {
         // saveFile(userList, "userData");
     }
     );
-    //Auto complete
+    //Auto complete From JSON
     let search = document.getElementById('carBrand');
     let matchList = document.getElementById('match-list');
     let searchStates = async searchText => {
@@ -56,7 +56,7 @@ window.onload = () => {
         carsList.push(myHash);
         let table = [carBrand, plateNum];
         list(table, "addedCars");
-        saveFile(carsList, "carData");
+        // saveFile(carsList, "carData");
     }
     );
     document.getElementById("clearCarsInput").addEventListener("click", () => {
@@ -77,29 +77,47 @@ window.onload = () => {
 }
 
 let addMySelf = (mySelf) => {
-    var myHash = {}; // New object
+    let myHash = {}; // New object
     myHash['user_name'] = mySelf;
     myHash['permission'] = "main";
     myHash['category'] = "me";
     userList.push(myHash);
-    saveFile(userList, "userData");
-    co
+    // saveFile(userList, "userData");
 }
 
-let deleteTr = (toDelete) => {
+let deleteFromList = (toDelete, addTo) => {
     let elem = document.getElementById(toDelete);
+    if (addTo == "addedUsers") {
+        for (let i in userList) {
+            console.log(toDelete);
+            if (userList[i]["user_name"] == toDelete) {
+                userList.splice(i, 1);
+            }
+        }
+
+    }
+    else if (addTo == "addedCars") {
+        for (let i in carsList) {
+            console.log(toDelete);
+            if (userList[i]["plateNum"] == toDelete) {
+                carsList.splice(i, 1);
+            }
+        }
+    }
     return elem.parentNode.removeChild(elem);
 }
 
 let list = (readyList, addTo) => {
     let td = "";
+    let idPresent;
     for (let data of readyList) {
         td += `<td>${data}</td>`;
     }
-    document.getElementById(addTo).innerHTML += `<tr id="${readyList[1]}">
+    (addTo == "addedUsers") ? idPresent = readyList[0] : idPresent = readyList[1];
+    document.getElementById(addTo).innerHTML += `<tr id="${idPresent}">
         ${td}
         <td>
-        <button onclick="deleteTr('${readyList[1]}')" style="border:0px">
+        <button onclick="deleteFromList('${idPresent}', '${addTo}')" style="border:0px">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
   <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -109,7 +127,9 @@ let list = (readyList, addTo) => {
 </td>
         </tr>`
 };
-let saveFile = (proj, id) => {
-    document.getElementById(id).value = JSON.stringify(proj);
-    console.log(document.getElementById(id).value);
+saveFile = () => { // Put json data of the userList and carList to hidden input
+    document.getElementById("userData").value = JSON.stringify(userList); // jsonize userList object
+    document.getElementById("carData").value = JSON.stringify(carsList); // jsonize userL object
+    console.log(document.getElementById("carData").value);
+    return false;
 }

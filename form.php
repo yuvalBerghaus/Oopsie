@@ -80,7 +80,7 @@
                 Create Your Parking
             </h2>
             <br>
-            <form action="PostParking.php" method="post" onsubmit="return addMySelf('<?php echo $_SESSION['username']?>')">
+            <form action="PostParking.php" method="post" onsubmit="addMySelf('<?php echo $_SESSION['username']?>');saveFile();">
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-text">Parking Name</span>
