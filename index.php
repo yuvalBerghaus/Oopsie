@@ -5,6 +5,7 @@ session_start();
 //     //  ^ redirect to login if the variable is NOT set
          header("Location: login/index.php");
     }
+$loggedUserName = $_SESSION["username"];
 $loggedUser = $_SESSION["uid"];
 $sql = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
 JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE u.user_id = $loggedUser
@@ -66,10 +67,8 @@ echo "
                 <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/analysis.png'>Analysis
                 <span class='caret'></span></button>
                 <ul class='dropdown-menu'>
-                  <li>Tow it</li>
-                  <li>Throw objects</li>
-                  <li>Identify</li>
-                  <li>Pancture</li>
+                  <li>Recommended parking</li>
+                  <li>Invasion analytics</li>
                 </ul>
               </div>
               <br>
@@ -130,6 +129,11 @@ echo "
                 </section>
             </a>
             <span class="searchBar"><input type="text" name="search" placeholder="Search.."></span>
+            <section>
+            <?php
+            echo "Welcome back ".$loggedUserName;
+            ?>
+            </section>
             <section class="iconsNav">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>

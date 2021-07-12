@@ -1,9 +1,6 @@
 <?php
-    session_start();
-    if (!isset($_SESSION["uid"])) {
-        //  ^ redirect to login if the variable is NOT set
-            header("Location: login/index.php");
-        }
+include('db.php');
+include('config.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +9,7 @@
     <meta charset="UTF-8">
     <script type="text/javascript" src="js/scriptForm.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Multipurpose Bootstrap 5 Template</title>
+    <title>Opps!e</title>
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -85,8 +82,6 @@
                     <div class="input-group">
                         <span class="input-group-text">Parking Name</span>
                         <input type="text" id="pName" maxlength="10" name="parking_name" aria-label="First name" class="form-control">
-                        <span class="input-group-text">Parking Address</span>
-                        <input type="text" id="pAddress" maxlength="10" name="parking_address" aria-label="First name" class="form-control">
                         <div class="row">
             
             <div class="col-md-6">

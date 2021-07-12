@@ -1,3 +1,7 @@
 <?php
-define("URL", "http://se.shenkar.ac.il/students/2020-2021/web1/dev_27/cloudV2/index.php");
+    session_start();
+    if (!isset($_SESSION["uid"])) {
+        //  ^ redirect to login if the variable is NOT set
+            header("Location: login/index.php");
+        }
 ?>

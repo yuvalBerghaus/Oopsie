@@ -1,17 +1,3 @@
-// $(function () {
-//     $('#myFormName').on('submit', function (e) {
-
-//         $.ajax({
-//             type: 'post',
-//             url: 'myPageName.php',
-//             data: $('#myFormName').serialize(),
-//             success: function () {
-//                 alert("Email has been sent!");
-//             }
-//         });
-//         e.preventDefault();
-//     });
-// });
 $(document).ready(function () {
     $("#deleteCars").submit(function () {
         let formData = {
@@ -25,6 +11,7 @@ $(document).ready(function () {
                 $("#target").html(result);
             }
         })
+        return false;
     })
     $("#deleteUsers").submit(function () {
         let formData = {
@@ -39,6 +26,7 @@ $(document).ready(function () {
                 $("#deleteUsers").html(result);
             }
         })
+        return false;
     })
     $("#updateUser").submit(function () {
         let formData = {
@@ -52,7 +40,9 @@ $(document).ready(function () {
             type: "post",
             data: formData,
             success: function (result) {
+                alert(result);
             }
         })
+        return false;
     })
 });
