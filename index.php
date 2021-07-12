@@ -47,49 +47,49 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
                   echo "</h4>
                   <p class='card-text'>Permission : ".$row['permission']."<br>Parking name:".$row['parking_name']."</p>
                   ";
-                  if($row['permission'] == 'main') {
-echo "
-<div class='dropdown'>
-<button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/actions.png'>Actions
-<span class='caret'></span></button>
-<ul class='dropdown-menu p-3 mb-2'>
-  <li>Tow it</li>
-  <li>Throw objects</li>
-  <li>Identify</li>
-  <li>Pancture</li>
-</ul>
-</div>
-<br>
-";
-                  }
-                  echo"
-                <div class='dropdown'>
-                <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/analysis.png'>Analysis
-                <span class='caret'></span></button>
-                <ul class='dropdown-menu'>
-                  <li>Recommended parking</li>
-                  <li>Invasion analytics</li>
-                </ul>
-              </div>
-              <br>
-              <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/members.png'>Members
-                </button>
-              <br>
-              <br>
-              <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/cars.png'>Cars
-              </button>
-              <br>
-              <br>
-              ";
-              if($row['permission'] == 'main') {
-              echo "
-              <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/events.png'>Events
-              </button>
-              <br>
-              <br>
-              <form method='get' action='delete.php'><button value='".$row['parking_id']."' style='width:100%' name='userstoparkingID' class='btn btn-danger' type='submit'>Delete
-              </button></form>
-              ";}
+//                   if($row['permission'] == 'main') {
+// echo "
+// <div class='dropdown'>
+// <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/actions.png'>Actions
+// <span class='caret'></span></button>
+// <ul class='dropdown-menu p-3 mb-2'>
+//   <li>Tow it</li>
+//   <li>Throw objects</li>
+//   <li>Identify</li>
+//   <li>Pancture</li>
+// </ul>
+// </div>
+// <br>
+// ";
+//                   }
+//                   echo"
+//                 <div class='dropdown'>
+//                 <button style='width:100%' class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/analysis.png'>Analysis
+//                 <span class='caret'></span></button>
+//                 <ul class='dropdown-menu'>
+//                   <li>Recommended parking</li>
+//                   <li>Invasion analytics</li>
+//                 </ul>
+//               </div>
+//               <br>
+//               <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/members.png'>Members
+//                 </button>
+//               <br>
+//               <br>
+//               <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/cars.png'>Cars
+//               </button>
+//               <br>
+//               <br>
+//               ";
+//               if($row['permission'] == 'main') {
+//               echo "
+//               <button style='width:100%' class='btn btn-primary' type='button' data-toggle='dropdown'><img style='height:25px;width:25px' src='images/events.png'>Events
+//               </button>
+//               <br>
+//               <br>
+//               <form method='get' action='delete.php'><button value='".$row['parking_id']."' style='width:100%' name='userstoparkingID' class='btn btn-danger' type='submit'>Delete
+//               </button></form>
+//               ";}
               echo "
                    </div>
               </div>
@@ -129,7 +129,7 @@ echo "
                 </section>
             </a>
             <span class="searchBar"><input type="text" name="search" placeholder="Search.."></span>
-            <section>
+            <section style="width:30px; font-size:10px">
             <?php
             echo "Welcome back ".$loggedUserName;
             ?>
