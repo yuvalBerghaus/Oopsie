@@ -3,7 +3,7 @@ include('./db.php');
 include('config.php');
 
 if(isset($_POST['carID'])) {
-  $id = $_POST['carID'];
+  $id =  mysqli_real_escape_string($conn,$_POST['carID']);
   $sqlDelTwo = "DELETE FROM tbl_cars_27 WHERE car_id = (SELECT car_id FROM tbl_carstoparking_27 WHERE cTp_id = $id)";
   $sqlDelOne = "DELETE FROM tbl_carstoparking_27 WHERE cTp_id = $id";
   $conn->query($sqlDelTwo);
@@ -11,7 +11,7 @@ if(isset($_POST['carID'])) {
   delete($id, $conn , $sqlDelOne, $whoDelete);
 }
 else if(isset($_GET['userstoparkingID'])) {
-  $id = $_GET['userstoparkingID'];
+  $id =  mysqli_real_escape_string($conn,$_GET['userstoparkingID']);
   $sqlDelOne = "DELETE FROM tbl_parkinglots_27 WHERE parking_id = $id";
   $sqlDelTwo = "DELETE FROM tbl_userstoparkings_27 WHERE parking_id = $id";
   $sqlDelThree = "DELETE FROM tbl_carstoparking_27 WHERE parking_id = $id";
@@ -21,7 +21,7 @@ else if(isset($_GET['userstoparkingID'])) {
   header("Location: index.php");
 }
 else if(isset($_POST['memberID'])) {
-  $id = $_POST['memberID'];
+  $id =  mysqli_real_escape_string($conn,$_POST['memberID']);
   $sqlDelOne = "DELETE FROM tbl_userstoparkings_27 WHERE users_to_parkings_id = $id";
   $whoDelete = "users";
   delete($id, $conn , $sqlDelOne, $whoDelete);

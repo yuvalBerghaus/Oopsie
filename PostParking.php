@@ -1,12 +1,12 @@
 <?php
 include('db.php');
 include('config.php');
-$users = $_POST['userData'];
+$users =  mysqli_real_escape_string($conn,$_POST['userData']);
 $myUid = $_SESSION["uid"];
-$cars = $_POST['carData'];
+$cars =  mysqli_real_escape_string($conn,$_POST['carData']);
 $manageUsers = json_decode($users, true);
 $manageCars = json_decode($cars, true);
-$parkingName = $_POST['parking_name'];
+$parkingName =  mysqli_real_escape_string($conn,$_POST['parking_name']);
 $sql = "INSERT INTO tbl_parkinglots_27 (parking_name , owner_id) VALUES
 ('$parkingName', '$myUid')";
 if(mysqli_query($conn, $sql))

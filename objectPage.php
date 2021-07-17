@@ -3,7 +3,7 @@ include('db.php');
 include('config.php');
 $loggedUser = $_SESSION["uid"];
 $loggedUserName = $_SESSION["username"];
-$u2p = $_GET['id'];
+$u2p = mysqli_real_escape_string($conn, $_GET['id']);
 $sql = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
 JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE utop.users_to_parkings_id = $u2p";
 $result = $conn->query($sql);
@@ -187,7 +187,7 @@ $i = 0;
     while($rowTwo = $resultCTP->fetch_assoc()) {
         echo "
       <tr class='table-active'>
-        <th scope='row'>$i</th>
+        <th scope='row'>".($i+1)."</th>
         <td>".$rowTwo['car_brand']."</td>
         <td>".$rowTwo['plate_number']."</td>
         <td>";
@@ -200,105 +200,112 @@ $i = 0;
 </svg></button>
 </td>
       </tr>
-      ";}$i++;}?>
+      ";}$i++;} $i = 0;?>
     </tbody>
   </table>
   </form>
   </div>
-  <div class="row">
-            <div class="col-md-6">
-                <h4 class="display-6 text-center text-muted my-4">Add Users to <?php echo $row['parking_name']; ?></h4>
-                <div class="input-group">
-                    <span class="input-group-text">User Name</span>
-                    <input type="text" aria-label="First name" class="form-control" id="username" required>
+  <?php
+  if($row['permission'] != 'main') {
+    echo "";
+  }
+  else {
+      echo "
+      <div class='row'>
+      <div class='col-md-6'>
+          <h4 class='display-6 text-center text-muted my-4'>Add Users to ".$row['parking_name']."</h4>
+          <div class='input-group'>
+              <span class='input-group-text'>User Name</span>
+              <input type='text' aria-label='First name' class='form-control' placeholder='Add a new member to your parking...' id='username' required>
+          </div>
+          <br>
+          <div class='input-group'>
+              <span class='input-group-text'>Category</span>
+              <select class='form-select' aria-label='Default select example' id='selectedCategory'>
+                  <option value='me'>My Parking</option>
+                  <option value='family'>Family</option>
+                  <option value='friends'>Friend</option>
+              </select>
+          </div>
+          <br>
+          <div class='input-group'>
+              <span class='input-group-text'>Permission</span>
+              <select id='sel1' class='form-select' aria-label='Default select example'>
+                  <option value='main'>Main</option>
+                  <option value='secondary'>Secondary</option>
+              </select>
+          </div>
+          <br>
+          <button type='button' id='addUserButton' class='btn btn-secondary'>Add User</button>
+          <button type='button' id='clearUserInput' class='btn btn-secondary'>Clear</button>
+      </div>
+      
+      <div class='col-md-6'>
+          <h4 class='display-6 text-center text-muted my-4'>Add Cars to ".$row['parking_name']."</h4>
+          <div class='input-group'>
+              <span class='input-group-text'>Car Brand</span>
+              <input type='text' aria-label='car brand' placeholder='Type the desired car brand...' class='form-control input-lg' id='carBrand' autocomplete='off'>
+          </div>
+          <div id='match-list'></div>
+          <br>
+          <div class='input-group'>
+              <span class='input-group-text'>Plate Number</span>
+              <input type='text'  placeholder='Type the cars plate number...' oninput='this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');' maxlength='7' aria-label='Plate number' class='form-control' id='plateNum' >
+          </div>
+          <br>
+          <button type='button' id='addCarButton' class='btn btn-secondary'>Add Car</button>
+          <button type='button' id='clearCarsInput' class='btn btn-secondary'>Clear</button>
+      </div>
+  </div>
+              <input type='hidden' name='userData' id='userData' value=''>
+              <input type='hidden' name='carData' id='carData' value=''>
+      <br>
+  <div class='row'>
+      <div class='col-md-6'>
+      <h4>User List</h4>
+          <table class='table table-striped'>
+              <thead>
+                  <tr>
+                      <th>Username</th>
+                      <th>Permission</th>
+                      <th>Category</th>
+                  </tr>
+              </thead>
+              <tbody id='addedUsers'>
+              </tbody>
+          </table>
+      </div>
+      <div class='col-md-6'>
+      <h4>Car List</h4>
+          <table class='table table-striped'>
+              <thead>
+                  <tr>
+                      <th>Car Brand</th>
+                      <th>Plate Number</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody id='addedCars'>
+              </tbody>
+          </table>
+      </div>
+      <div class='row bg-light'>
+               <div class='col-md-12 text-center'>
+              <form action='#' id='updateExistingParking' method='post' onsubmit='saveFile()'>
+              <input type='hidden' name='userData' id='userData' value=''>
+      <input type='hidden' name='carData' id='carData' value=''>
+               <button type='submit' value='".$row['parking_id']."' class='btn btn-primary btn-lg center' id='submit'>Add to my parking</button>
+      </form>
                 </div>
-                <br>
-                <div class="input-group">
-                    <span class="input-group-text">Category</span>
-                    <select class="form-select" aria-label="Default select example" id="selectedCategory">
-                        <option value="me">My Parking</option>
-                        <option value="family">Family</option>
-                        <option value="friends">Friend</option>
-                    </select>
-                </div>
-                <br>
-                <div class="input-group">
-                    <span class="input-group-text">Permission</span>
-                    <select id="sel1" class="form-select" aria-label="Default select example">
-                        <option value="main">Main</option>
-                        <option value="secondary">Secondary</option>
-                    </select>
-                </div>
-                <br>
-                <button type="button" id="addUserButton" class="btn btn-secondary">Add User</button>
-                <button type="button" id="clearUserInput" class="btn btn-secondary">Clear</button>
-            </div>
-            
-            <div class="col-md-6">
-                <h4 class="display-6 text-center text-muted my-4">Add Cars to <?php echo $row['parking_name']; ?></h4>
-                <div class="input-group">
-                    <span class="input-group-text">Car Brand</span>
-                    <input type="text" aria-label="car brand" class="form-control input-lg" id="carBrand" autocomplete="off">
-                </div>
-                <div id="match-list"></div>
-                <br>
-                <div class="input-group">
-                    <span class="input-group-text">Plate Number</span>
-                    <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="7" aria-label="Plate number" class="form-control" id="plateNum">
-                </div>
-                <br>
-                <button type="button" id="addCarButton" class="btn btn-secondary">Add Car</button>
-                <button type="button" id="clearCarsInput" class="btn btn-secondary">Clear</button>
-            </div>
-        </div>
-                    <input type="hidden" name="userData" id="userData" value="">
-                    <input type="hidden" name="carData" id="carData" value="">
-            <br>
-        <div class="row">
-            <div class="col-md-6">
-            <h4>User List</h4>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Permission</th>
-                            <th>Category</th>
-                        </tr>
-                    </thead>
-                    <tbody id="addedUsers">
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-6">
-            <h4>Car List</h4>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Car Brand</th>
-                            <th>Plate Number</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody id="addedCars">
-                    </tbody>
-                </table>
-            </div>
-            <div class="row bg-light">
-                     <div class="col-md-12 text-center">
-                    <form action="#" id="updateExistingParking" method="post" onsubmit="saveFile()">
-                    <input type='hidden' name='userData' id='userData' value=''>
-            <input type='hidden' name='carData' id='carData' value=''>
-                     <button type="submit" value='<?php echo $row['parking_id']?>' class="btn btn-primary btn-lg center" id="submit">Add to my parking</button>
-            </form>
-                      </div>
-                <div class="col-md-12 text-center">
-            <?php    echo "  <form method='get' action='delete.php'><button value='".$row['parking_id']."' style='' name='userstoparkingID' class='btn btn-danger' type='submit'>
-            Delete Parking
-               </button></form>";?>
-               </div>
-        <!-- /footer -->
-        </div> 
-        </div><!--endofrow -->
+          <div class='col-md-12 text-center'>
+       <form method='get' action='delete.php'><button value='".$row['parking_id']."' style='' name='userstoparkingID' class='btn btn-danger' type='submit'>
+      Delete Parking
+         </button></form>";}?>
+         </div>
+  <!-- /footer -->
+  </div> 
+  </div><!--endofrow -->
+
         <!-- /Container-->
     <!-- JavaScript and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
