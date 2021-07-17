@@ -85,7 +85,7 @@ include('config.php');
                         <div class="row">
             
             <div class="col-md-6">
-                <h4 class="display-6 text-center text-muted my-4">Add Users to <div id="displayParkingNameInUsers"></div></h4>
+                <h4 class="display-6 text-center text-muted my-4">Add Users to <span class="displayParkingName"></span></h4>
                 <div class="input-group">
                     <span class="input-group-text">User Name</span>
                     <input type="text" aria-label="First name" class="form-control" id="username" required>
@@ -113,7 +113,7 @@ include('config.php');
             </div>
             
             <div class="col-md-6">
-                <h4 class="display-6 text-center text-muted my-4">Add Cars to <div id="displayParkingNameInCars"></div></h4>
+                <h4 class="display-6 text-center text-muted my-4">Add Cars to <span class="displayParkingName"></span></h4>
                 <div class="input-group">
                     <span class="input-group-text">Car Brand</span>
                     <input type="text" aria-label="car brand" class="form-control input-lg" id="carBrand" autocomplete="off">

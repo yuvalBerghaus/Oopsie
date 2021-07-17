@@ -30,13 +30,13 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
             $row3 = $result3->fetch_assoc();
             echo "
           <div class='col-md-6 col-lg-4'>
-              <div class='card mb-3 parkingObject' id='".$row['users_to_parkings_id']."' style='align-items: center;'>
-                  <div class='thumbnail' style='margin-left:120px'>";
+              <div class='card mb-3 parkingObject' id='".$row['users_to_parkings_id']."'>
+                  <div class='thumbnail' style=''>";
                     if($category != "me") {
-                        echo "<img src='".$row2['imgRef']."' class='rounded-circle' alt='Fjords' style='width:20%;'>";
+                        echo "<img src='".$row2['imgRef']."' class='img-thumbnail' alt='picture' ' style='width:20%;'>";
                     }
                     else {
-                        echo "<img src='".$row['imgRef']."' class='rounded-circle' alt='Fjords' style='width:20%;'>";
+                        echo "<img src='".$row['imgRef']."' class='img-thumbnail' alt='picture' style='width:20%;'>";
                     }
                     echo "
                   </div>

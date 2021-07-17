@@ -21,13 +21,13 @@ $result = $conn->query($sql);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/object.js"></script>
+    <script type="text/javascript" src="js/crud.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:#cccccc">
-        <div class="container" style="justify-content:unset">  <!-- ADDED JUSTIFY CONTENT -->
+        <div class="container" style="">  <!-- ADDED JUSTIFY CONTENT -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -70,32 +70,31 @@ $result = $conn->query($sql);
             </div>
         </div>
     </nav>
-    <div class='container pt-4' style='position:relative; margin-top:120px'>
-        <div class='row'>
+    <div class='container' style='margin-top:120px'>
         
         <?php
         $row = $result->fetch_assoc();
                      echo "  
-            <div class='col'>
+        <div class='row'>
             <h3 class='display-3 text-center text-muted my-4'>".$row['parking_name']."<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' style='width: 5vw; height: 5vh;' viewBox='0 0 16 16'>
                      <path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
                    </svg><!--Write title here-->
                      </h3>      
-                <img src='https://media-cdn.tripadvisor.com/media/photo-s/06/6d/0f/c0/red-roof-inn-durham-duke.jpg' style='height:70%; width:auto'>
-            </div>
-            <div class='col'>
+                <img src='https://media-cdn.tripadvisor.com/media/photo-s/06/6d/0f/c0/red-roof-inn-durham-duke.jpg' alt='car' class='img-thumbnail' style='width:30%'>
+        </div>
+        <div class='row table-responsive-sm'>
             <h3 class='display-6 text-center text-muted my-4'>Members<!--Write title here-->
             </h3>
             <table class='table table-dark table-sm'>
-    <thead>
-      <tr>
-        <th scope='col'>#</th>
-        <th scope='col'>Username</th>
-        <th scope='col'>Permission</th>
-        <th scope='col'>Category</th>
-        <th scope='col'>";
+             <thead>
+             <tr>
+                  <th scope='col'>#</th>
+                    <th scope='col'>Username</th>
+                      <th scope='col'>Permission</th>
+                       <th scope='col'>Category</th>
+                          <th scope='col'>";
         if($row['permission'] == 'main') {
-        echo "<img style='height:25px; filter: brightness(0) invert(1);' src='images/addUser.png'>";
+        echo "<img style='height:25px; filter: brightness(0) invert(1);' alt='add user' src='images/addUser.png'>";
         }
         echo "
         </th>
@@ -155,7 +154,7 @@ echo "
 <td>
 <form id='updateUser' action='#' method='post'>
         <button value='".$rowTwo['users_to_parkings_id']."' type='submit'>
-        <img src='images/success.png' style='height:20px'>
+        <img src='images/success.png' style='height:20px' alt='update'>
         </button></form>
 </td>
       </tr>
@@ -163,7 +162,7 @@ echo "
     </tbody>
   </table>
   </div>
-  <div class='col'>
+  <div class='row'>
   <h3 class='display-6 text-center text-muted my-4'>Cars<!--Write title here-->
   </h3>
   <form id='deleteCars' action='#' method='post'>
@@ -176,7 +175,7 @@ echo "
         <th scope='col'>
             <?php
             if($row['permission'] == 'main') {
-                echo "<img src='images/cars.png' style='height:25px'>";
+                echo "<img src='images/cars.png' style='height:25px' alt='cars'>";
             }
             ?>
         </th>
@@ -208,8 +207,7 @@ $i = 0;
   </table>
   </form>
   </div>
-        </div><!--endofrow -->
-        <div class="row">
+  <div class="row">
             <div class="col-md-6">
                 <h4 class="display-6 text-center text-muted my-4">Add Users to <?php echo $row['parking_name']; ?></h4>
                 <div class="input-group">
@@ -266,8 +264,7 @@ $i = 0;
                         <tr>
                             <th>Username</th>
                             <th>Permission</th>
-                            <th>Category</th>
-                            <th></th>
+                            <th>Category</th>>
                         </tr>
                     </thead>
                     <tbody id="addedUsers">
@@ -288,22 +285,23 @@ $i = 0;
                     </tbody>
                 </table>
             </div>
-            <div class="container bg-light">
+            <div class="row bg-light">
                      <div class="col-md-12 text-center">
                     <form action="#" id="updateExistingParking" method="post" onsubmit="saveFile()">
                     <input type='hidden' name='userData' id='userData' value=''>
             <input type='hidden' name='carData' id='carData' value=''>
                      <button type="submit" value='<?php echo $row['parking_id']?>' class="btn btn-primary btn-lg center" id="submit">Add to my parking</button>
-        </form>
+            </form>
                       </div>
-                </div>
                 <div class="col-md-12 text-center">
             <?php    echo "  <form method='get' action='delete.php'><button value='".$row['parking_id']."' style='' name='userstoparkingID' class='btn btn-danger' type='submit'>
             Delete Parking
                </button></form>";?>
                </div>
         <!-- /footer -->
-    </div> <!-- /Container-->
+        </div> 
+        </div><!--endofrow -->
+        <!-- /Container-->
     <!-- JavaScript and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

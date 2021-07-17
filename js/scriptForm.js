@@ -13,8 +13,6 @@ window.onload = () => {
         userList.push(myHash);
         let table = [userName, selectedPermission, selectedCategory];
         list(table, "addedUsers");
-        // console.log(userList);
-        // saveFile(userList, "userData");
     }
     );
     //Auto complete From JSON
@@ -56,7 +54,6 @@ window.onload = () => {
         carsList.push(myHash);
         let table = [carBrand, plateNum];
         list(table, "addedCars");
-        // saveFile(carsList, "carData");
     }
     );
     document.getElementById("clearCarsInput").addEventListener("click", () => {
@@ -70,9 +67,10 @@ window.onload = () => {
     }
     );
     pName.addEventListener('input', () => {
-        console.log("dasdass");
-        document.getElementById("displayParkingNameInUsers").innerHTML = pName.value;
-        document.getElementById("displayParkingNameInCars").innerHTML = pName.value;
+        let x = document.getElementsByClassName("displayParkingName");
+        for (let i = 0; i < x.length; i++) {
+            x[i].innerHTML = pName.value;
+        }
     });
 }
 
@@ -82,7 +80,6 @@ let addMySelf = (mySelf) => {
     myHash['permission'] = "main";
     myHash['category'] = "me";
     userList.push(myHash);
-    // saveFile(userList, "userData");
 }
 
 let deleteFromList = (toDelete, addTo) => {
@@ -122,7 +119,6 @@ let list = (readyList, addTo) => {
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
   <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
 </svg>
-
 </button>
 </td>
         </tr>`
