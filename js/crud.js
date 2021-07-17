@@ -14,6 +14,8 @@ $(document).ready(function () {
         })
         return false;
     })
+    // $(".blah:eq(i)")
+    // for (let i = 0; i < $(".blah")) { }
     $("#deleteUsers").submit(function () {
         let formData = {
             "memberID": $(document.activeElement).val()
@@ -60,7 +62,6 @@ $(document).ready(function () {
             type: "post",
             data: formData,
             success: function (result) {
-                alert(result);
             }
         })
     })

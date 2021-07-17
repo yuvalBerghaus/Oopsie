@@ -33,10 +33,10 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
               <div class='card mb-3 parkingObject' id='".$row['users_to_parkings_id']."'>
                   <div class='thumbnail' style=''>";
                     if($category != "me") {
-                        echo "<img src='".$row2['imgRef']."' class='img-thumbnail' alt='picture' ' style='width:20%;'>";
+                        echo "<img src='".$row2['imgRef']."' class='img-thumbnail defaultImg' alt='picture'>";
                     }
                     else {
-                        echo "<img src='".$row['imgRef']."' class='img-thumbnail' alt='picture' style='width:20%;'>";
+                        echo "<img src='".$row['imgRef']."' class='img-thumbnail defaultImg' alt='picture'>";
                     }
                     echo "
                   </div>
@@ -90,8 +90,8 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
                 <section id="myLogo">
                 </section>
             </a>
-            <span class="searchBar"><input type="text" name="search" placeholder="Search.."></span>
-            <section style="width:30px; font-size:10px;">
+            <span class="searchBar"><input type="text" name="search" placeholder="Search parking lot..."></span>
+            <section id="welcome">
             <?php
             echo "Welcome back ".$loggedUserName;
             ?>
@@ -112,10 +112,7 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
                             Notifications
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkOne">
-                            <li><a class="dropdown-item" href="#">Full Stack JavaScript</a></li>
-                            <li><a class="dropdown-item" href="#">Python</a></li>
-                            <li><a class="dropdown-item" href="#">Artificial Intelligence</a></li>
-                            <li><a class="dropdown-item" href="#">Mobile Development</a></li>
+                            <li><a class="dropdown-item" href="#">Lotem ipsum</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -133,7 +130,7 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
         </div>
     </nav>
 
-    <div class="container pt-4" style="position:relative; margin-top:120px">
+    <div class="container pt-4" style="margin-top:120px">
         <div class="row" style="justify-content:center">
         <!-- <section style="margin:0">
                 Welcome back <?php echo $_SESSION['username'] ?>
