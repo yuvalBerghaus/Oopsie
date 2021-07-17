@@ -8,7 +8,8 @@ $(document).ready(function () {
             type: "post",
             data: formData,
             success: function (result) {
-                $("#target").html(result);
+                $("#carsTableList").html(result);
+                console.log(result);
             }
         })
         return false;
@@ -23,7 +24,8 @@ $(document).ready(function () {
             type: "post",
             data: formData,
             success: function (result) {
-                $("#deleteUsers").html(result);
+                $("#userTableList").html(result);
+                console.log(result);
             }
         })
         return false;
@@ -40,10 +42,9 @@ $(document).ready(function () {
             type: "post",
             data: formData,
             success: function (result) {
-                alert(result);
+
             }
         })
-        return false;
     })
     $("#updateExistingParking").submit(function () {
         let formData = {
@@ -62,6 +63,5 @@ $(document).ready(function () {
                 alert(result);
             }
         })
-        return false;
     })
 });

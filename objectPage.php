@@ -75,7 +75,7 @@ $result = $conn->query($sql);
         <?php
         $row = $result->fetch_assoc();
                      echo "  
-        <div class='row'>
+        <div class='row' style='justify-content:center'>
             <h3 class='display-3 text-center text-muted my-4'>".$row['parking_name']."<!--Write title here-->
                      </h3>      
                 <img src='https://media-cdn.tripadvisor.com/media/photo-s/06/6d/0f/c0/red-roof-inn-durham-duke.jpg' alt='car' class='img-thumbnail' style='width:30%'>
@@ -99,7 +99,7 @@ $result = $conn->query($sql);
         <th></th>
         </tr>
     </thead>
-    <tbody>";
+    <tbody id='userTableList'>";
     $parkingID = $row['parking_id'];
     $sqlTwo = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
 JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE utop.parking_id = $parkingID";
@@ -179,7 +179,7 @@ echo "
         </th>
       </tr>
     </thead>
-    <tbody><?php
+    <tbody id="carsTableList"><?php
     $sqlQueryCTP = "SELECT * FROM tbl_carstoparking_27 as ctop JOIN tbl_cars_27 as c on ctop.car_id = c.car_id
     JOIN tbl_parkinglots_27 as p on ctop.parking_id = p.parking_id WHERE ctop.parking_id = $parkingID";
 $resultCTP = $conn->query($sqlQueryCTP);
@@ -244,7 +244,7 @@ $i = 0;
                 <br>
                 <div class="input-group">
                     <span class="input-group-text">Plate Number</span>
-                    <input type="text" aria-label="Plate number" class="form-control" id="plateNum">
+                    <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="7" aria-label="Plate number" class="form-control" id="plateNum">
                 </div>
                 <br>
                 <button type="button" id="addCarButton" class="btn btn-secondary">Add Car</button>

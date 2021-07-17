@@ -81,14 +81,14 @@ include('config.php');
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-text">Parking Name</span>
-                        <input type="text" id="pName" maxlength="10" name="parking_name" aria-label="First name" class="form-control">
+                        <input type="text" id="pName" maxlength="10" name="parking_name" placeholder="Write your parking location here..." aria-label="First name" class="form-control">
                         <div class="row">
             
             <div class="col-md-6">
                 <h4 class="display-6 text-center text-muted my-4">Add Users to <span class="displayParkingName"></span></h4>
                 <div class="input-group">
                     <span class="input-group-text">User Name</span>
-                    <input type="text" aria-label="First name" class="form-control" id="username">
+                    <input type="text" aria-label="First name" class="form-control" placeholder="Add a new member to your parking..." id="username">
                 </div>
                 <br>
                 <div class="input-group">
@@ -116,13 +116,13 @@ include('config.php');
                 <h4 class="display-6 text-center text-muted my-4">Add Cars to <span class="displayParkingName"></span></h4>
                 <div class="input-group">
                     <span class="input-group-text">Car Brand</span>
-                    <input type="text" aria-label="car brand" class="form-control input-lg" id="carBrand" autocomplete="off">
+                    <input type="text" aria-label="car brand" placeholder="Type the desired car brand..." class="form-control input-lg" id="carBrand" autocomplete="off">
                 </div>
                 <div id="match-list"></div>
                 <br>
                 <div class="input-group">
                     <span class="input-group-text">Plate Number</span>
-                    <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="7" aria-label="Plate number" class="form-control" id="plateNum" >
+                    <input type="text"  placeholder="Type the car's plate number..." oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="7" aria-label="Plate number" class="form-control" id="plateNum" >
                 </div>
                 <br>
                 <button type="button" id="addCarButton" class="btn btn-secondary">Add Car</button>
