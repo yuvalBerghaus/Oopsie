@@ -12,8 +12,6 @@ window.onload = () => {
         userList.push(myHash);
         let table = [userName, selectedPermission, selectedCategory];
         list(table, "addedUsers");
-        // console.log(userList);
-        // saveFile(userList, "userData");
     }
     );
     //Auto complete From JSON

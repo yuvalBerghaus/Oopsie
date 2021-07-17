@@ -7,6 +7,8 @@ window.onload = () => {
         let selectedPermission = document.getElementById("sel1").value;
         let selectedCategory = document.getElementById("selectedCategory").value;
         var myHash = {}; // New object
+        userName.toLowerCase();
+        selectedPermission.toLowerCase();
         myHash['user_name'] = userName;
         myHash['permission'] = selectedPermission;
         myHash['category'] = selectedCategory;
@@ -29,13 +31,15 @@ window.onload = () => {
         console.log(matches);
         outputHTML(matches);
         if (searchText.length === 0) {
+            matches = []
             matchList.innerHTML = '';
+            document.getElementById("match-list").style = "display:block;"
         }
     }
     let outputHTML = matches => {
         if (matches.length > 0) {
             let html = matches.map(match => `
-                    <div>${match.name}
+                    <div onclick="autoCompleteClick('${match.name}')">${match.name}
                     <input type="hidden" value="${match.name}">
                     </div>
             `).join('');
@@ -66,12 +70,14 @@ window.onload = () => {
         console.log("read");
     }
     );
-    pName.addEventListener('input', () => {
-        let x = document.getElementsByClassName("displayParkingName");
-        for (let i = 0; i < x.length; i++) {
-            x[i].innerHTML = pName.value;
-        }
-    });
+    if (pName != null) {
+        pName.addEventListener('input', () => {
+            let x = document.getElementsByClassName("displayParkingName");
+            for (let i = 0; i < x.length; i++) {
+                x[i].innerHTML = pName.value;
+            }
+        });
+    }
 }
 
 let addMySelf = (mySelf) => {
@@ -128,4 +134,9 @@ saveFile = () => { // Put json data of the userList and carList to hidden input
     document.getElementById("carData").value = JSON.stringify(carsList); // jsonize userL object
     console.log(document.getElementById("carData").value);
     return false;
+}
+
+function autoCompleteClick(brand) {
+    document.getElementById("carBrand").value = brand;
+    document.getElementById("match-list").style = "display:none;"
 }

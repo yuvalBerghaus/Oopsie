@@ -88,7 +88,7 @@ include('config.php');
                 <h4 class="display-6 text-center text-muted my-4">Add Users to <span class="displayParkingName"></span></h4>
                 <div class="input-group">
                     <span class="input-group-text">User Name</span>
-                    <input type="text" aria-label="First name" class="form-control" id="username" required>
+                    <input type="text" aria-label="First name" class="form-control" id="username">
                 </div>
                 <br>
                 <div class="input-group">
@@ -122,7 +122,7 @@ include('config.php');
                 <br>
                 <div class="input-group">
                     <span class="input-group-text">Plate Number</span>
-                    <input type="text" aria-label="Plate number" class="form-control" id="plateNum">
+                    <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="7" aria-label="Plate number" class="form-control" id="plateNum" >
                 </div>
                 <br>
                 <button type="button" id="addCarButton" class="btn btn-secondary">Add Car</button>

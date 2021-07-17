@@ -216,25 +216,8 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
             <div class="col-md-7">
                 <ul class="nav">
                     <li class="nav-item">
-                        <!-- Example single danger button -->
-                        <div class="btn-group dropup">
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Social Media
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item"
-                                    href="#">Youtube</a>
-                                <a class="dropdown-item" href="https://www.facebook.com/mark.berghaus.3/">Facebook</a>
-                                <a class="dropdown-item" href="#">Instagram</a>
-                                <a class="dropdown-item" href="#">Twitter</a>
-                            </div>
-                        </div>
                     </li>
                 </ul>
-            </div>
-            <div class="col-md text-md-right">
-                <small>&copy; 2021 <a href="#">Bootstrap</a></small>
             </div>
             </div>
         </div><!-- /footer -->
