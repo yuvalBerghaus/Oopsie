@@ -102,7 +102,7 @@ let deleteFromList = (toDelete, addTo) => {
     else if (addTo == "addedCars") {
         for (let i in carsList) {
             console.log(toDelete);
-            if (userList[i]["plateNum"] == toDelete) {
+            if (carsList[i]["plateNum"] == toDelete) {
                 carsList.splice(i, 1);
             }
         }
