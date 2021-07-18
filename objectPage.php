@@ -79,6 +79,8 @@ $result = $conn->query($sql);
         
         <?php
         $row = $result->fetch_assoc();
+        $_SESSION['permission'] = $row['permission'];
+        $_SESSION['parking_id'] = $row['parking_id'];
                      echo "  
         <div class='row' style='justify-content:center'>
             <h3 class='display-3 text-center text-muted my-4'>".$row['parking_name']."<!--Write title here-->
@@ -88,6 +90,8 @@ $result = $conn->query($sql);
         <div class='row table-responsive-sm'>
             <h3 class='display-6 text-center text-muted my-4'>Members<!--Write title here-->
             </h3>
+            <form id='deleteUser' action='#' method='post'></form>
+            <form id='updateUser' action='#' method='post'></form>
             <table class='table table-dark table-sm'>
              <thead>
              <tr>
@@ -109,7 +113,7 @@ $result = $conn->query($sql);
     $sqlTwo = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
 JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE utop.parking_id = $parkingID";
 $resultTwo = $conn->query($sqlTwo);
-$i = 0;
+$i = 1;
     while($rowTwo = $resultTwo->fetch_assoc()) {
         if($rowTwo['user_id'] != $row['user_id']) {
         echo "
@@ -117,7 +121,7 @@ $i = 0;
         <th scope='row'>$i</th>
         <td>".$rowTwo['username']."</td>
         <td>
-        <select name='selectedPermission' id='selectedPermission'>
+        <select name='selectedPermission' id='".$rowTwo['users_to_parkings_id']."Permission'>
   <option value='".$rowTwo['permission']."' selected>".$rowTwo['permission']."</option>
   ";
   if($rowTwo['permission'] == 'main') {
@@ -130,7 +134,7 @@ $i = 0;
   </option>
 </select></td>
 <td>
-<select name='selectedCategory' id='selectedCategory'>
+<select name='selectedCategory' id='".$rowTwo['users_to_parkings_id']."Category'>
 ";
 $categoryArray = array("me", "family", "friends");
 for($j = 0 ; $j < 3 ; $j++) {
@@ -147,18 +151,15 @@ echo "
         ";
         if($row['permission'] == 'main') {
             echo "
-            <form id='deleteUsers' action='#' method='post'>
-        <button value='".$rowTwo['users_to_parkings_id']."' type='submit'>
+        <input form='deleteUser' value='".$rowTwo['users_to_parkings_id']."' type='submit'>
         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
   <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z'/>
   <path fill-rule='evenodd' d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'/>
-</svg></button></form>
+</svg>
 </td>
 <td>
-<form id='updateUser' action='#' method='post'>
-        <button value='".$rowTwo['users_to_parkings_id']."' type='submit'>
+        <input form='updateUser' value='".$rowTwo['users_to_parkings_id']."' type='submit'>
         <img src='images/success.png' style='height:20px' alt='update'>
-        </button></form>
 </td>
       </tr>
       ";}}$i++;}?>
@@ -226,7 +227,7 @@ $i = 0;
           <br>
           <div class='input-group'>
               <span class='input-group-text'>Category</span>
-              <select class='form-select' aria-label='Default select example' id='selectedCategory'>
+              <select class='form-select' aria-label='Default select example' id='selectedCategories'>
                   <option value='me'>My Parking</option>
                   <option value='family'>Family</option>
                   <option value='friends'>Friend</option>
@@ -235,7 +236,7 @@ $i = 0;
           <br>
           <div class='input-group'>
               <span class='input-group-text'>Permission</span>
-              <select id='sel1' class='form-select' aria-label='Default select example'>
+              <select id='selectedPermissions' class='form-select' aria-label='Default select example'>
                   <option value='main'>Main</option>
                   <option value='secondary'>Secondary</option>
               </select>
@@ -274,6 +275,7 @@ $i = 0;
                       <th>Username</th>
                       <th>Permission</th>
                       <th>Category</th>
+                      <th></th>
                   </tr>
               </thead>
               <tbody id='addedUsers'>

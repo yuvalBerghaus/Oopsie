@@ -9,5 +9,6 @@ if(isset($_POST['u2pID'])) {
     SET permission = '$permission', category= '$category'
     WHERE users_to_parkings_id = $id";
     $conn->query($sqlUpdate);
+    
   }
 ?>

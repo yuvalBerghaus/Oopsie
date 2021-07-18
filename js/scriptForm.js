@@ -4,16 +4,16 @@ window.onload = () => {
     let pName = document.getElementById("pName"); // Parking name var
     document.getElementById("addUserButton").addEventListener("click", () => { // For each add User to list click
         let userName = document.getElementById("username").value;
-        let selectedPermission = document.getElementById("sel1").value;
-        let selectedCategory = document.getElementById("selectedCategory").value;
-        var myHash = {}; // New object
+        let selectedPermissions = document.getElementById("selectedPermissions").value;
+        let selectedCategories = document.getElementById("selectedCategories").value;
+        let myHash = {}; // New object
         userName.toLowerCase();
-        selectedPermission.toLowerCase();
+        selectedPermissions.toLowerCase();
         myHash['user_name'] = userName;
-        myHash['permission'] = selectedPermission;
-        myHash['category'] = selectedCategory;
+        myHash['permission'] = selectedPermissions;
+        myHash['category'] = selectedCategories;
         userList.push(myHash);
-        let table = [userName, selectedPermission, selectedCategory];
+        let table = [userName, selectedPermissions, selectedCategories];
         list(table, "addedUsers");
     }
     );
@@ -132,11 +132,11 @@ let list = (readyList, addTo) => {
 saveFile = () => { // Put json data of the userList and carList to hidden input
     document.getElementById("userData").value = JSON.stringify(userList); // jsonize userList object
     document.getElementById("carData").value = JSON.stringify(carsList); // jsonize userL object
+    console.log(document.getElementById("userData").value);
     console.log(document.getElementById("carData").value);
-    return false;
 }
 
-function autoCompleteClick(brand) {
-    document.getElementById("carBrand").value = brand;
+function autoCompleteClick(carBrand) {
+    document.getElementById("carBrand").value = carBrand;
     document.getElementById("match-list").style = "display:none;"
 }

@@ -36,10 +36,8 @@ if(count($manageCars)) {
         echo $last_idOfParking;
         addCarsToParking($last_idOfCar, $parkingID
          , $conn);
-        
     }
 }
-header("Location: index.php");
 
 function addCarsToParking($last_idOfCar, $last_idOfParking, $conn) {
     $sql = "INSERT INTO tbl_carstoparking_27 (parking_id , car_id) VALUES

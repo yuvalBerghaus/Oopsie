@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("#deleteCars").submit(function () {
         let formData = {
-            "carID": $(document.activeElement).val()
+            "cTpID": $(document.activeElement).val()
         };
         $.ajax({
             url: "delete.php",
@@ -9,36 +9,33 @@ $(document).ready(function () {
             data: formData,
             success: function (result) {
                 $("#carsTableList").html(result);
-                console.log(result);
             }
         })
         return false;
     })
     // $(".blah:eq(i)")
     // for (let i = 0; i < $(".blah")) { }
-    $("#deleteUsers").submit(function () {
+    $("#deleteUser").submit(function () {
         let formData = {
-            "memberID": $(document.activeElement).val()
+            "userstoparking_id": $(document.activeElement).val()
         };
-        console.log($(document.activeElement).val())
         $.ajax({
             url: "./delete.php",
             type: "post",
             data: formData,
             success: function (result) {
                 $("#userTableList").html(result);
-                console.log(result);
             }
         })
         return false;
     })
     $("#updateUser").submit(function () {
+        let uTpID = $(document.activeElement).val();
         let formData = {
             "u2pID": $(document.activeElement).val(),
-            "selectedPermission": $('#selectedPermission').val(),
-            "selectedCategory": $('#selectedCategory').val(),
+            "selectedPermission": $(`#${uTpID}Permission`).val(),
+            "selectedCategory": $(`#${uTpID}Category`).val(),
         };
-        console.log(formData);
         $.ajax({
             url: "./update.php",
             type: "post",

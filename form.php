@@ -93,7 +93,7 @@ include('config.php');
                 <br>
                 <div class="input-group">
                     <span class="input-group-text">Category</span>
-                    <select class="form-select" aria-label="Default select example" id="selectedCategory">
+                    <select class="form-select" aria-label="Default select example" id="selectedCategories">
                         <option value="me">My Parking</option>
                         <option value="family">Family</option>
                         <option value="friends">Friend</option>
@@ -102,7 +102,7 @@ include('config.php');
                 <br>
                 <div class="input-group">
                     <span class="input-group-text">Permission</span>
-                    <select id="sel1" class="form-select" aria-label="Default select example">
+                    <select id="selectedPermissions" class="form-select" aria-label="Default select example">
                         <option value="main">Main</option>
                         <option value="secondary">Secondary</option>
                     </select>
