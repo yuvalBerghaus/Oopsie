@@ -30,7 +30,8 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
             $row3 = $result3->fetch_assoc();
             echo "
           <div class='col-md-6 col-lg-4'>
-              <div class='card mb-3 parkingObject' id='".$row['users_to_parkings_id']."'>
+              <div class='card mb-3 text-primary lead
+              parkingObject' id='".$row['users_to_parkings_id']."'>
                   <div class='thumbnail' style=''>";
                     if($category != "me") {
                         echo "<img src='".$row2['imgRef']."' class='img-thumbnail defaultImg' alt='picture'>";
@@ -41,7 +42,7 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
                     echo "
                   </div>
                   <div class='card-body'>
-                  <h4 class='card-title'>";
+                  <h4 class='card-title display-5'>";
                   if($category == "me") {
                     //   echo $row3['parking_name'];
                     echo $row['parking_name'];
@@ -137,9 +138,12 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
             </section> -->
             <div class="row">
                 <h3 class='display-3 text-center text-muted my-4'>My Parking Lists
-                <a href="form.php" class="link-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <a href="form.php" class="link-secondary">
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg></a>
+            </svg> -->
+            <img src="images/plus.png" style="height:50px;">
+        </a>
                 </h3>
             </div>
         <div class="row">                                <!-- CHANGED MAX WIDTH TO NONE -->

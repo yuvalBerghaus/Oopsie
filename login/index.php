@@ -45,10 +45,11 @@ include('../db.php');
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" type="text/css" href="../style.css">
   </head>
   <body>
     <div class="container">
-      <h1>Login</h1>
+      <h1 id="loginLogo"></h1>
       <form action="#" method="post" id="frm">
         <div class="form-group">
           <label for="loginMail">Email: </label>

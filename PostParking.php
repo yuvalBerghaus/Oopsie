@@ -56,5 +56,6 @@ function addCarsToParking($last_idOfCar, $last_idOfParking, $conn) {
         echo "tried to add ".$last_idOfParking." and ".$last_idOfCar;
     }
 }
+header("Location: ./index.php");
 mysqli_close($conn);
 ?>

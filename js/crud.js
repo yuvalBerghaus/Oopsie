@@ -41,9 +41,11 @@ $(document).ready(function () {
             type: "post",
             data: formData,
             success: function (result) {
-
+                alert("update succeed");
+                $("#userTableList").html(result);
             }
         })
+        return false;
     })
     $("#updateExistingParking").submit(function () {
         let formData = {
