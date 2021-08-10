@@ -12,7 +12,7 @@ include('config.php');
     <title>Opps!e</title>
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
 <body>
@@ -28,6 +28,11 @@ include('config.php');
                 </section>
             </a>
             <span class="searchBar"><input type="text" name="search" placeholder="Search.."></span>
+            <section id="welcome">
+            <?php
+            echo "Welcome back ".$_SESSION['username'];
+            ?>
+            </section>
             <section class="iconsNav">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-search"
                     viewBox="0 0 16 16">
@@ -53,15 +58,13 @@ include('config.php');
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkSecond" role="button"
                             data-toggle="dropdown" aria-expanded="false">
                             Settings
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Real Life Projects</a></li>
-                            <li><a class="dropdown-item" href="#">Online Marketing</a></li>
-                            <li><a class="dropdown-item" href="#">Business & Ideas</a></li>
-                            <li><a class="dropdown-item" href="#">Stock Trading</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkSecond">
+                            <li><a class="dropdown-item" href="#">My Profile</a></li>
+                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -109,6 +112,7 @@ include('config.php');
                 </div>
                 <br>
                 <button type="button" id="addUserButton" class="btn btn-secondary">Add User</button>
+                <input type="hidden" value="<?php echo $_SESSION['username'];?>" id="currentUserName">
                 <button type="button" id="clearUserInput" class="btn btn-secondary">Clear</button>
             </div>
             

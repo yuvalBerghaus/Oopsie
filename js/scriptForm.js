@@ -1,9 +1,16 @@
-let userList = [];
-let carsList = [];
+let userList = []; // This variable contains a list of objects of each user added in the form // pre Jsonize
+let carsList = []; // """""""""""""""""""""""""""""""""""""""""""""""""car """""""""""""""""""""""""""""""""
 window.onload = () => {
     let pName = document.getElementById("pName"); // Parking name var
     document.getElementById("addUserButton").addEventListener("click", () => { // For each add User to list click
         let userName = document.getElementById("username").value;
+        if (userName == document.getElementById("currentUserName").value) {
+            alert("You cannot add yourself to the parking since you are automatically added");
+            return;
+        }
+        console.log(document.getElementById("currentUserName").value);
+
+        let table;
         let selectedPermissions = document.getElementById("selectedPermissions").value;
         let selectedCategories = document.getElementById("selectedCategories").value;
         let myHash = {}; // New object
@@ -13,7 +20,7 @@ window.onload = () => {
         myHash['permission'] = selectedPermissions;
         myHash['category'] = selectedCategories;
         userList.push(myHash);
-        let table = [userName, selectedPermissions, selectedCategories];
+        table = [userName, selectedPermissions, selectedCategories];
         list(table, "addedUsers");
     }
     );

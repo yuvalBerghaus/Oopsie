@@ -22,7 +22,7 @@ $result = $conn->query($sql);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/crud.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
 <body>
@@ -99,11 +99,7 @@ $result = $conn->query($sql);
                     <th scope='col'>Username</th>
                       <th scope='col'>Permission</th>
                        <th scope='col'>Category</th>
-                          <th scope='col'>";
-        if($row['permission'] == 'main') {
-        echo "<img style='height:25px; filter: brightness(0) invert(1);' alt='add user' src='images/addUser.png'>";
-        }
-        echo "
+                          <th scope='col'>
         </th>
         <th></th>
         </tr>
@@ -113,7 +109,7 @@ $result = $conn->query($sql);
     $sqlTwo = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
 JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE utop.parking_id = $parkingID";
 $resultTwo = $conn->query($sqlTwo);
-$i = 1;
+$i = 0;
     while($rowTwo = $resultTwo->fetch_assoc()) {
         if($rowTwo['user_id'] != $row['user_id']) {
         echo "
@@ -243,6 +239,7 @@ $i = 0;
           </div>
           <br>
           <button type='button' id='addUserButton' class='btn btn-secondary'>Add User</button>
+          <input type='hidden' value= ".$_SESSION['username']." id='currentUserName'>
           <button type='button' id='clearUserInput' class='btn btn-secondary'>Clear</button>
       </div>
       

@@ -77,7 +77,7 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/scriptIndex.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
 <body>
@@ -133,15 +133,9 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
 
     <div class="container pt-4" style="margin-top:120px">
         <div class="row" style="justify-content:center">
-        <!-- <section style="margin:0">
-                Welcome back <?php echo $_SESSION['username'] ?>
-            </section> -->
             <div class="row">
                 <h3 class='display-3 text-center text-muted my-4'>My Parking Lists
                 <a href="form.php" class="link-secondary">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg> -->
             <img src="images/plus.png" style="height:50px;">
         </a>
                 </h3>
