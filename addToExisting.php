@@ -11,11 +11,11 @@ $manageCars = json_decode($cars, true);
 for ($i=0;$i<count($manageUsers);$i++){
     $permission = $manageUsers[$i]['permission'];
     $category = $manageUsers[$i]['category'];
-    $sql = mysqli_query($conn,"SELECT `user_id` FROM `tbl_users_27` WHERE username = '".$manageUsers[$i]['user_name']."'");
+    $sql = mysqli_query($conn,"SELECT `user_id` FROM `tbl_users_206` WHERE username = '".$manageUsers[$i]['user_name']."'");
     while ($row = mysqli_fetch_assoc($sql)) {
         $uid = $row["user_id"];
     }
-    $sql = "INSERT INTO tbl_userstoparkings_27 (user_id, parking_id , permission , category) VALUES
+    $sql = "INSERT INTO tbl_userstoparkings_206 (user_id, parking_id , permission , category) VALUES
     ('$uid' , '$parkingID' , '$permission' , '$category')";
     if(mysqli_query($conn, $sql))
         echo "Records added successfully.";
@@ -28,7 +28,7 @@ if(count($manageCars)) {
     for ($i=0;$i<count($manageCars);$i++){
         $carBrand = $manageCars[$i]['carBrand'];
         $plateNum = $manageCars[$i]['plateNum'];
-        $sql = "INSERT INTO tbl_cars_27 (car_brand , plate_number) VALUES
+        $sql = "INSERT INTO tbl_cars_206 (car_brand , plate_number) VALUES
         ('$carBrand' , '$plateNum')";
         if(mysqli_query($conn, $sql))
             echo "Records added successfully.";
@@ -40,7 +40,7 @@ if(count($manageCars)) {
 }
 
 function addCarsToParking($last_idOfCar, $last_idOfParking, $conn) {
-    $sql = "INSERT INTO tbl_carstoparking_27 (parking_id , car_id) VALUES
+    $sql = "INSERT INTO tbl_carstoparking_206 (parking_id , car_id) VALUES
     ('$last_idOfParking' , '$last_idOfCar')";
     if(mysqli_query($conn, $sql))
         echo "Records of carstoparking was added succesfully";

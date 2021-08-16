@@ -3,7 +3,7 @@ include('../db.php');
   // name of mail field
   if (!empty($_POST["email"])){
     //echo 'FORM SENT';
-    $query  = "SELECT * FROM tbl_users_27 WHERE email='" 
+    $query  = "SELECT * FROM tbl_users_206 WHERE email='" 
     . $_POST["email"]. "' and password = '". $_POST["password"]."'";
     echo $query;
     $result = mysqli_query($conn , $query);

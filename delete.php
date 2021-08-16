@@ -4,17 +4,17 @@ include('config.php');
 
 if(isset($_POST['cTpID'])) {
   $cTpID =  mysqli_real_escape_string($conn,$_POST['cTpID']);
-  $sqlDelTwo = "DELETE FROM tbl_cars_27 WHERE car_id = (SELECT car_id FROM tbl_carstoparking_27 WHERE cTp_id = $cTpID)";
-  $sqlDelOne = "DELETE FROM tbl_carstoparking_27 WHERE cTp_id = $cTpID";
+  $sqlDelTwo = "DELETE FROM tbl_cars_206 WHERE car_id = (SELECT car_id FROM tbl_carstoparking_206 WHERE cTp_id = $cTpID)";
+  $sqlDelOne = "DELETE FROM tbl_carstoparking_206 WHERE cTp_id = $cTpID";
   $conn->query($sqlDelTwo);
   $whoDelete = "cars";
   delete($cTpID, $conn , $sqlDelOne, $whoDelete);
 }
 else if(isset($_GET['userstoparkingID'])) {
   $id =  mysqli_real_escape_string($conn,$_GET['userstoparkingID']);
-  $sqlDelOne = "DELETE FROM tbl_parkinglots_27 WHERE parking_id = $id";
-  $sqlDelTwo = "DELETE FROM tbl_userstoparkings_27 WHERE parking_id = $id";
-  $sqlDelThree = "DELETE FROM tbl_carstoparking_27 WHERE parking_id = $id";
+  $sqlDelOne = "DELETE FROM tbl_parkinglots_206 WHERE parking_id = $id";
+  $sqlDelTwo = "DELETE FROM tbl_userstoparkings_206 WHERE parking_id = $id";
+  $sqlDelThree = "DELETE FROM tbl_carstoparking_206 WHERE parking_id = $id";
   $conn->query($sqlDelOne);
   $conn->query($sqlDelTwo);
   $conn->query($sqlDelThree);
@@ -22,7 +22,7 @@ else if(isset($_GET['userstoparkingID'])) {
 }
 else if(isset($_POST['userstoparking_id'])) {
   $id =  mysqli_real_escape_string($conn,$_POST['userstoparking_id']);
-  $sqlDelOne = "DELETE FROM tbl_userstoparkings_27 WHERE users_to_parkings_id = $id";
+  $sqlDelOne = "DELETE FROM tbl_userstoparkings_206 WHERE users_to_parkings_id = $id";
   $whoDelete = "users";
   delete($id, $conn , $sqlDelOne, $whoDelete);
 }
@@ -32,8 +32,8 @@ function delete($id, $conn, $sqlDel, $whoDelete) {
             if($whoDelete == "cars") {
                   $parkingID = $_SESSION['parking_id'];
                   $permission = $_SESSION['permission'];
-                  $sqlQueryCTP = "SELECT * FROM tbl_carstoparking_27 as ctop JOIN tbl_cars_27 as c on ctop.car_id = c.car_id
-                  JOIN tbl_parkinglots_27 as p on ctop.parking_id = p.parking_id WHERE ctop.parking_id = $parkingID";
+                  $sqlQueryCTP = "SELECT * FROM tbl_carstoparking_206 as ctop JOIN tbl_cars_206 as c on ctop.car_id = c.car_id
+                  JOIN tbl_parkinglots_206 as p on ctop.parking_id = p.parking_id WHERE ctop.parking_id = $parkingID";
                   $resultCTP = $conn->query($sqlQueryCTP);
                     $i = 0;
               while($rowTwo = $resultCTP->fetch_assoc()) {
@@ -55,13 +55,13 @@ function delete($id, $conn, $sqlDel, $whoDelete) {
                 ";}$i++;} $i = 0;
             }
             else if($whoDelete == "users") {
-$sql = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
-JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE utop.users_to_parkings_id = $id";
+$sql = "SELECT * FROM tbl_userstoparkings_206 as utop JOIN tbl_users_206 as u on utop.user_id = u.user_id
+JOIN tbl_parkinglots_206 as p on utop.parking_id = p.parking_id WHERE utop.users_to_parkings_id = $id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $parkingID = $_SESSION['parking_id'];
-$sqlTwo = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
-JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE utop.parking_id = $parkingID";
+$sqlTwo = "SELECT * FROM tbl_userstoparkings_206 as utop JOIN tbl_users_206 as u on utop.user_id = u.user_id
+JOIN tbl_parkinglots_206 as p on utop.parking_id = p.parking_id WHERE utop.parking_id = $parkingID";
 $resultTwo = $conn->query($sqlTwo);
 $i = 1;
 while($rowTwo = $resultTwo->fetch_assoc()) {

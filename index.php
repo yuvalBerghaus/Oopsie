@@ -7,8 +7,8 @@ session_start();
     }
 $loggedUserName = $_SESSION["username"];
 $loggedUser = $_SESSION["uid"];
-$sql = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
-JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE u.user_id = $loggedUser
+$sql = "SELECT * FROM tbl_userstoparkings_206 as utop JOIN tbl_users_206 as u on utop.user_id = u.user_id
+JOIN tbl_parkinglots_206 as p on utop.parking_id = p.parking_id WHERE u.user_id = $loggedUser
 ";
 $result = $conn->query($sql);
 $result2 = $conn->query($sql);
@@ -22,8 +22,8 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
     while($row = $result->fetch_assoc()) {
         if($row['category'] == $category) {
             $owner_id = $row['owner_id'];
-            $secQuery = "SELECT * FROM tbl_users_27 as u WHERE u.user_id = $owner_id";
-            $thirdQuery = "SELECT * FROM tbl_parkinglots_27 as p WHERE p.owner_id = $owner_id";
+            $secQuery = "SELECT * FROM tbl_users_206 as u WHERE u.user_id = $owner_id";
+            $thirdQuery = "SELECT * FROM tbl_parkinglots_206 as p WHERE p.owner_id = $owner_id";
             $result2 = $conn->query($secQuery);
             $row2 = $result2->fetch_assoc();
             $result3 = $conn->query($thirdQuery);
@@ -34,10 +34,10 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
               parkingObject' id='".$row['users_to_parkings_id']."'>
                   <div class='thumbnail' style=''>";
                     if($category != "me") {
-                        echo "<img src='".$row2['imgRef']."' class='img-thumbnail defaultImg' alt='picture'>";
+                        echo "<img src='".$row2['imgRef']."' class='img-thumbnail defaultImg' title='".$row2['username']."' alt='picture'>";
                     }
                     else {
-                        echo "<img src='".$row['imgRef']."' class='img-thumbnail defaultImg' alt='picture'>";
+                        echo "<img src='".$row['imgRef']."' class='img-thumbnail defaultImg' alt='picture' title='".$row['username']."'>";
                     }
                     echo "
                   </div>
@@ -135,9 +135,9 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
         <div class="row" style="justify-content:center">
             <div class="row">
                 <h3 class='display-3 text-center text-muted my-4'>My Parking Lists
-                <a href="form.php" class="link-secondary">
-            <img src="images/plus.png" style="height:50px;">
-        </a>
+                    <a href="form.php" class="link-secondary">
+                       <img src="images/plus.png" style="height:50px;" alt="add new parking" title="add new parking">
+                    </a>
                 </h3>
             </div>
         <div class="row">                                <!-- CHANGED MAX WIDTH TO NONE -->
@@ -159,7 +159,6 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
             <h2 class='display-4 text-center text-muted my-4'>Friends Parking Lots</h2>
             <?php 
             getParkingList($result2, $conn , "friends");
-            $conn->close();
             ?>
         </div>
         <!-- footer -->
@@ -183,3 +182,6 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
 </body>
 
 </html>
+<?php 
+$conn->close();
+?>

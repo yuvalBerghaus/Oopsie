@@ -13,8 +13,6 @@ $(document).ready(function () {
         })
         return false;
     })
-    // $(".blah:eq(i)")
-    // for (let i = 0; i < $(".blah")) { }
     $("#deleteUser").submit(function () {
         let formData = {
             "userstoparking_id": $(document.activeElement).val()
@@ -50,8 +48,6 @@ $(document).ready(function () {
     $("#updateExistingParking").submit(function () {
         let formData = {
             "parkingID": $(document.activeElement).val(),
-            // "selectedPermission": $('#selectedPermission').val(),
-            // "selectedCategory": $('#selectedCategory').val(),
             "userData": $('#userData').val(),
             "carData": $('#carData').val(),
         };

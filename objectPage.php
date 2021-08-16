@@ -4,8 +4,8 @@ include('config.php');
 $loggedUser = $_SESSION["uid"];
 $loggedUserName = $_SESSION["username"];
 $u2p = mysqli_real_escape_string($conn, $_GET['id']);
-$sql = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
-JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE utop.users_to_parkings_id = $u2p";
+$sql = "SELECT * FROM tbl_userstoparkings_206 as utop JOIN tbl_users_206 as u on utop.user_id = u.user_id
+JOIN tbl_parkinglots_206 as p on utop.parking_id = p.parking_id WHERE utop.users_to_parkings_id = $u2p";
 $result = $conn->query($sql);
 ?>
 
@@ -79,7 +79,7 @@ $result = $conn->query($sql);
         
         <?php
         $row = $result->fetch_assoc();
-        $_SESSION['permission'] = $row['permission'];
+        $_SESSION['myPermission'] = $row['permission'];
         $_SESSION['parking_id'] = $row['parking_id'];
                      echo "  
         <div class='row' style='justify-content:center'>
@@ -99,15 +99,20 @@ $result = $conn->query($sql);
                     <th scope='col'>Username</th>
                       <th scope='col'>Permission</th>
                        <th scope='col'>Category</th>
-                          <th scope='col'>
-        </th>
+                       ";
+                       if($_SESSION['myPermission'] == 'main') {
+                           echo "
+                        <th scope='col'>
+                        </th>";
+                       }
+                       echo "
         <th></th>
         </tr>
     </thead>
     <tbody id='userTableList'>";
     $parkingID = $row['parking_id'];
-    $sqlTwo = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
-JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE utop.parking_id = $parkingID";
+    $sqlTwo = "SELECT * FROM tbl_userstoparkings_206 as utop JOIN tbl_users_206 as u on utop.user_id = u.user_id
+JOIN tbl_parkinglots_206 as p on utop.parking_id = p.parking_id WHERE utop.parking_id = $parkingID";
 $resultTwo = $conn->query($sqlTwo);
 $i = 0;
     while($rowTwo = $resultTwo->fetch_assoc()) {
@@ -182,8 +187,8 @@ echo "
       </tr>
     </thead>
     <tbody id="carsTableList"><?php
-    $sqlQueryCTP = "SELECT * FROM tbl_carstoparking_27 as ctop JOIN tbl_cars_27 as c on ctop.car_id = c.car_id
-    JOIN tbl_parkinglots_27 as p on ctop.parking_id = p.parking_id WHERE ctop.parking_id = $parkingID";
+    $sqlQueryCTP = "SELECT * FROM tbl_carstoparking_206 as ctop JOIN tbl_cars_206 as c on ctop.car_id = c.car_id
+    JOIN tbl_parkinglots_206 as p on ctop.parking_id = p.parking_id WHERE ctop.parking_id = $parkingID";
 $resultCTP = $conn->query($sqlQueryCTP);
 $i = 0;
     while($rowTwo = $resultCTP->fetch_assoc()) {

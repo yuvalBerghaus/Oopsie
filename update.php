@@ -5,15 +5,15 @@ if(isset($_POST['u2pID'])) {
     $id =  mysqli_real_escape_string($conn,$_POST['u2pID']);
     $permission =  mysqli_real_escape_string($conn,$_POST['selectedPermission']);
     $category =  mysqli_real_escape_string($conn,$_POST['selectedCategory']);
-    $sqlUpdate = "UPDATE tbl_userstoparkings_27
+    $sqlUpdate = "UPDATE tbtbl_userstoparkings_206
     SET permission = '$permission', category= '$category'
     WHERE users_to_parkings_id = $id";
     $conn->query($sqlUpdate);
 
 
     $parkingID = $_SESSION['parking_id'];
-    $sqlTwo = "SELECT * FROM tbl_userstoparkings_27 as utop JOIN tbl_users_27 as u on utop.user_id = u.user_id
-JOIN tbl_parkinglots_27 as p on utop.parking_id = p.parking_id WHERE utop.parking_id = $parkingID";
+    $sqlTwo = "SELECT * FROM tbtbl_userstoparkings_206 as utop JOIN tbl_users_206 as u on utop.user_id = u.user_id
+JOIN tbl_parkinglots_206 as p on utop.parking_id = p.parking_id WHERE utop.parking_id = $parkingID";
 $resultTwo = $conn->query($sqlTwo);
 $i = 1;
     while($rowTwo = $resultTwo->fetch_assoc()) {
@@ -51,7 +51,7 @@ echo "
 </select></td>
         <td>
         ";
-        if($_SESSION['permission'] == 'main') {
+        if($_SESSION['myPermission'] == 'main') {
             echo "
         <button form='deleteUser' value='".$rowTwo['users_to_parkings_id']."' type='submit'>
         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>
