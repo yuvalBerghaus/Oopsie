@@ -30,7 +30,7 @@ include('config.php');
             <span class="searchBar"><input type="text" name="search" placeholder="Search.."></span>
             <section id="welcome">
             <?php
-            echo "Welcome back ".$_SESSION['username'];
+            echo "Welcome ".$_SESSION['username'];
             ?>
             </section>
             <section class="iconsNav">

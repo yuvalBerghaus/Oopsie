@@ -94,7 +94,7 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
             <span class="searchBar"><input type="text" name="search" placeholder="Search parking lot..."></span>
             <section id="welcome">
             <?php
-            echo "Welcome back ".$loggedUserName;
+            echo "Welcome ".$loggedUserName;
             ?>
             </section>
             <section class="iconsNav">

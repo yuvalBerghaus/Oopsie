@@ -5,14 +5,14 @@ if(isset($_POST['u2pID'])) {
     $id =  mysqli_real_escape_string($conn,$_POST['u2pID']);
     $permission =  mysqli_real_escape_string($conn,$_POST['selectedPermission']);
     $category =  mysqli_real_escape_string($conn,$_POST['selectedCategory']);
-    $sqlUpdate = "UPDATE tbtbl_userstoparkings_206
+    $sqlUpdate = "UPDATE tbl_userstoparkings_206
     SET permission = '$permission', category= '$category'
     WHERE users_to_parkings_id = $id";
     $conn->query($sqlUpdate);
 
 
     $parkingID = $_SESSION['parking_id'];
-    $sqlTwo = "SELECT * FROM tbtbl_userstoparkings_206 as utop JOIN tbl_users_206 as u on utop.user_id = u.user_id
+    $sqlTwo = "SELECT * FROM tbl_userstoparkings_206 as utop JOIN tbl_users_206 as u on utop.user_id = u.user_id
 JOIN tbl_parkinglots_206 as p on utop.parking_id = p.parking_id WHERE utop.parking_id = $parkingID";
 $resultTwo = $conn->query($sqlTwo);
 $i = 1;

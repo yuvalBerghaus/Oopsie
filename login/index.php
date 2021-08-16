@@ -5,7 +5,6 @@ include('../db.php');
     //echo 'FORM SENT';
     $query  = "SELECT * FROM tbl_users_206 WHERE email='" 
     . $_POST["email"]. "' and password = '". $_POST["password"]."'";
-    echo $query;
     $result = mysqli_query($conn , $query);
     $row    = mysqli_fetch_array($result); 
 
@@ -16,24 +15,27 @@ include('../db.php');
       $_SESSION["uid"] = $row["user_id"];
       $user =$_SESSION['username'];
       $uid =$_SESSION['uid'];
-      // $sesssion_id=$_SESSION['user_id'];
       if (isset($_SESSION["uid"])) {
         //  ^ redirect to login if the variable is NOT set
             header("Location: ../index.php");
         }
-    } else {
-      echo "failure";
+    }
+    else {
+      $message = "Failed to connect";
+      echo "<div class='error-message'>"; 
+       if(isset($message)) {
+         echo $message; 
+        } 
+      echo "</div>";
     }
 
   }
-
 ?>
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>JOINS</title>
+    <title>Oops!e</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -43,8 +45,7 @@ include('../db.php');
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
   </head>
   <body>
@@ -63,7 +64,6 @@ include('../db.php');
         </div>
         <button type="submit" class="btn btn-primary">Log Me In</button>
         <button type="submit" class="btn btn-primary">Register</button>
-        <div class="error-message"><?php if(isset($message)) { echo $message; } ?></div> 
       </form>
     </div>
   </body>

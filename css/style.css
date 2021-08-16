@@ -37,7 +37,12 @@
         display: none;
     }
 }
-
+.error-message {
+    display: flex;
+    justify-content: center;
+    color:red;
+    font-weight: bold;
+}
 
 #match-list div{
     padding: 10px;

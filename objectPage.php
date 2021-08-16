@@ -39,7 +39,7 @@ $result = $conn->query($sql);
             <span class="searchBar"><input type="text" name="search" placeholder="Search parking lot..."></span>
             <section id="welcome">
             <?php
-            echo "Welcome back ".$loggedUserName;
+            echo "Welcome ".$loggedUserName;
             ?>
             </section>
             <section class="iconsNav">
