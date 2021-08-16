@@ -31,7 +31,7 @@ function delete($id, $conn, $sqlDel, $whoDelete) {
             $i = 1;
             if($whoDelete == "cars") {
                   $parkingID = $_SESSION['parking_id'];
-                  $permission = $_SESSION['permission'];
+                  $permission = $_SESSION['myPermission'];
                   $sqlQueryCTP = "SELECT * FROM tbl_carstoparking_206 as ctop JOIN tbl_cars_206 as c on ctop.car_id = c.car_id
                   JOIN tbl_parkinglots_206 as p on ctop.parking_id = p.parking_id WHERE ctop.parking_id = $parkingID";
                   $resultCTP = $conn->query($sqlQueryCTP);
@@ -74,7 +74,7 @@ while($rowTwo = $resultTwo->fetch_assoc()) {
     <select name='selectedPermission' id='".$rowTwo['users_to_parkings_id']."Permission'>
 <option value='".$rowTwo['permission']."' selected>".$rowTwo['permission']."</option>
 ";
-if($_SESSION['permission'] == 'main') {
+if($_SESSION['myPermission'] == 'main') {
   echo " <option value='secondary'>secondary";
 }
 else {
@@ -99,7 +99,7 @@ echo "
 </select></td>
     <td>
     ";
-    if($_SESSION['permission'] == 'main') {
+    if($_SESSION['myPermission'] == 'main') {
         echo "
     <button form='deleteUser' value='".$rowTwo['users_to_parkings_id']."' type='submit'>
     <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash' viewBox='0 0 16 16'>

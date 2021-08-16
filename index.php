@@ -34,15 +34,15 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
               parkingObject' id='".$row['users_to_parkings_id']."'>
                   <div class='thumbnail' style=''>";
                     if($category != "me") {
-                        echo "<img src='".$row2['imgRef']."' class='img-thumbnail defaultImg' title='".$row2['username']."' alt='picture'>";
+                        echo "<img src='".$row2['imgRef']."' class='img-thumbnail defaultImg' title='".$row2['username']."' alt='".$row2['username']."'>";
                     }
                     else {
-                        echo "<img src='".$row['imgRef']."' class='img-thumbnail defaultImg' alt='picture' title='".$row['username']."'>";
+                        echo "<img src='".$row['imgRef']."' class='img-thumbnail defaultImg' alt='".$row2['username']."' title='".$row['username']."'>";
                     }
                     echo "
                   </div>
                   <div class='card-body'>
-                  <h4 class='card-title display-5'>";
+                  <h4 class='card-title display-7'>";
                   if($category == "me") {
                     //   echo $row3['parking_name'];
                     echo $row['parking_name'];
@@ -133,30 +133,32 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
 
     <div class="container pt-4" style="margin-top:120px">
         <div class="row" style="justify-content:center">
-            <div class="row">
-                <h3 class='display-3 text-center text-muted my-4'>My Parking Lists
-                    <a href="form.php" class="link-secondary">
-                       <img src="images/plus.png" style="height:50px;" alt="add new parking" title="add new parking">
-                    </a>
-                </h3>
+            <div class="row" style="margin-bottom:40px;">
+                <h1 class='display-3 text-center text-muted my-1'>Parking Lots
+                </h1>
             </div>
+            <hr>
         <div class="row">                                <!-- CHANGED MAX WIDTH TO NONE -->
-        
-        <h3 class='display-4 text-center text-muted my-4'>My Parking Lots</h3>
+            <div style="display:flex; align-items:center; justify-content:center;" >
+                <h3 class='display-5 text-center text-muted my-4'>My Parking Lots</h3>
+                 <a href="form.php" class="link-secondary">
+                       <img src="images/plus.png" style="height:50px;" alt="add new parking" title="add new parking">
+                  </a>
+            </div>  
             <?php
             getParkingList($result3, $conn , "me");
             ?>
         </div>
         <hr>
         <div class="row">
-            <h3 class='display-4 text-center text-muted my-4'>Family Parking Lots</h3>
+            <h3 class='display-5 text-center text-muted my-4'>Family Parking Lots</h3>
                 <?php
                 getParkingList($result, $conn , "family");
                 ?>
         </div>
         <hr><!-- /signup form -->
         <div class="row">
-            <h2 class='display-4 text-center text-muted my-4'>Friends Parking Lots</h2>
+            <h2 class='display-5 text-center text-muted my-4'>Friends Parking Lots</h2>
             <?php 
             getParkingList($result2, $conn , "friends");
             ?>

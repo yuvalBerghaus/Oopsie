@@ -303,7 +303,7 @@ $i = 0;
               <form action='#' id='updateExistingParking' method='post' onsubmit='saveFile()'>
               <input type='hidden' name='userData' id='userData' value=''>
       <input type='hidden' name='carData' id='carData' value=''>
-               <button type='submit' value='".$row['parking_id']."' class='btn btn-primary btn-lg center' id='submit'>Add to my parking</button>
+               <button type='submit' style='margin-bottom:20px' value='".$row['parking_id']."' class='btn btn-success btn-lg center' id='submit'>Add to my parking</button>
       </form>
                 </div>
           <div class='col-md-12 text-center'>
