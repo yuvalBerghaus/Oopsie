@@ -131,7 +131,7 @@ function getParkingList(mysqli_result $result , mysqli $conn , string $category)
         </div>
     </nav>
 
-    <div class="container pt-4" style="margin-top:120px">
+    <div class="container pt-4" style="position:relative; top:160px; margin: 0 auto;">
         <div class="row" style="justify-content:center">
             <div class="row" style="margin-bottom:40px;">
                 <h1 class='display-3 text-center text-muted my-1'>Parking Lots
